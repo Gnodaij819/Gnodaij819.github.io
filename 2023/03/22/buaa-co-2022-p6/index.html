@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="BUAA_CO_2022 P5, Gnodaij&#39;s Blog">
+    <meta name="keywords" content="BUAA_CO_2022_P6, Gnodaij&#39;s Blog">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>BUAA_CO_2022 P5 | Gnodaij&#39;s Blog</title>
+    <title>BUAA_CO_2022_P6 | Gnodaij&#39;s Blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -246,12 +246,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/%20(11).png')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/%20(17).jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">BUAA_CO_2022 P5</h1>
+                    <h1 class="description center-align post-title">BUAA_CO_2022_P6</h1>
                 </div>
             </div>
         </div>
@@ -302,7 +302,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    4.1k
+                    4k
                 </div>
                 
 
@@ -322,8 +322,7 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>[TOC]</p>
-<h1 id="P5-CPU"><a href="#P5-CPU" class="headerlink" title="P5_CPU"></a>P5_CPU</h1><h2 id="流水线架构"><a href="#流水线架构" class="headerlink" title="流水线架构"></a>流水线架构</h2><table>
+                <h1 id="P6-CPU-Document"><a href="#P6-CPU-Document" class="headerlink" title="P6_CPU_Document"></a>P6_CPU_Document</h1><h2 id="流水线架构"><a href="#流水线架构" class="headerlink" title="流水线架构"></a>流水线架构</h2><table>
 <thead>
 <tr>
 <th>阶段</th>
@@ -360,6 +359,194 @@
 <ul>
 <li>流水线寄存器以其供给数据的流水级的简称命名</li>
 </ul>
+<h3 id="顶层模块"><a href="#顶层模块" class="headerlink" title="顶层模块"></a>顶层模块</h3><h4 id="mips-v"><a href="#mips-v" class="headerlink" title="mips.v"></a>mips.v</h4><p>接口定义如下：</p>
+<pre class="line-numbers language-verilog" data-language="verilog"><code class="language-verilog"><span class="token keyword">module</span> <span class="token function">mips</span><span class="token punctuation">(</span>
+    <span class="token keyword">input</span> clk<span class="token punctuation">,</span>
+    <span class="token keyword">input</span> reset<span class="token punctuation">,</span>
+    <span class="token keyword">input</span> <span class="token punctuation">[</span><span class="token number">31</span><span class="token punctuation">:</span><span class="token number">0</span><span class="token punctuation">]</span> i_inst_rdata<span class="token punctuation">,</span>
+    <span class="token keyword">input</span> <span class="token punctuation">[</span><span class="token number">31</span><span class="token punctuation">:</span><span class="token number">0</span><span class="token punctuation">]</span> m_data_rdata<span class="token punctuation">,</span>
+    <span class="token keyword">output</span> <span class="token punctuation">[</span><span class="token number">31</span><span class="token punctuation">:</span><span class="token number">0</span><span class="token punctuation">]</span> i_inst_addr<span class="token punctuation">,</span>
+    <span class="token keyword">output</span> <span class="token punctuation">[</span><span class="token number">31</span><span class="token punctuation">:</span><span class="token number">0</span><span class="token punctuation">]</span> m_data_addr<span class="token punctuation">,</span>
+    <span class="token keyword">output</span> <span class="token punctuation">[</span><span class="token number">31</span><span class="token punctuation">:</span><span class="token number">0</span><span class="token punctuation">]</span> m_data_wdata<span class="token punctuation">,</span>
+    <span class="token keyword">output</span> <span class="token punctuation">[</span><span class="token number">3</span> <span class="token punctuation">:</span><span class="token number">0</span><span class="token punctuation">]</span> m_data_byteen<span class="token punctuation">,</span>
+    <span class="token keyword">output</span> <span class="token punctuation">[</span><span class="token number">31</span><span class="token punctuation">:</span><span class="token number">0</span><span class="token punctuation">]</span> m_inst_addr<span class="token punctuation">,</span>
+    <span class="token keyword">output</span> w_grf_we<span class="token punctuation">,</span>
+    <span class="token keyword">output</span> <span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">:</span><span class="token number">0</span><span class="token punctuation">]</span> w_grf_addr<span class="token punctuation">,</span>
+    <span class="token keyword">output</span> <span class="token punctuation">[</span><span class="token number">31</span><span class="token punctuation">:</span><span class="token number">0</span><span class="token punctuation">]</span> w_grf_wdata<span class="token punctuation">,</span>
+    <span class="token keyword">output</span> <span class="token punctuation">[</span><span class="token number">31</span><span class="token punctuation">:</span><span class="token number">0</span><span class="token punctuation">]</span> w_inst_addr
+<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<table>
+<thead>
+<tr>
+<th align="center">信号名</th>
+<th align="center">方向</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">clk</td>
+<td align="center">I</td>
+<td align="center">时钟信号</td>
+</tr>
+<tr>
+<td align="center">reset</td>
+<td align="center">I</td>
+<td align="center">同步复位信号</td>
+</tr>
+<tr>
+<td align="center">i_inst_rdata [31:0]</td>
+<td align="center">I</td>
+<td align="center">i_inst_addr 对应的 32 位指令</td>
+</tr>
+<tr>
+<td align="center">m_data_rdata [31:0]</td>
+<td align="center">I</td>
+<td align="center">m_data_addr 对应的 32 位数据</td>
+</tr>
+<tr>
+<td align="center">i_inst_addr [31:0]</td>
+<td align="center">O</td>
+<td align="center">需要进行取指操作的流水级 PC（一般为 F 级）</td>
+</tr>
+<tr>
+<td align="center">m_data_addr [31:0]</td>
+<td align="center">O</td>
+<td align="center">数据存储器待写入地址</td>
+</tr>
+<tr>
+<td align="center">m_data_wdata [31:0]</td>
+<td align="center">O</td>
+<td align="center">数据存储器待写入数据</td>
+</tr>
+<tr>
+<td align="center">m_data_byteen [3:0]</td>
+<td align="center">O</td>
+<td align="center">字节使能信号</td>
+</tr>
+<tr>
+<td align="center">m_inst_addr [31:0]</td>
+<td align="center">O</td>
+<td align="center">M 级 PC</td>
+</tr>
+<tr>
+<td align="center">w_grf_we</td>
+<td align="center">O</td>
+<td align="center">GRF 写使能信号</td>
+</tr>
+<tr>
+<td align="center">w_grf_addr [4:0]</td>
+<td align="center">O</td>
+<td align="center">GRF 中待写入寄存器编号</td>
+</tr>
+<tr>
+<td align="center">w_grf_wdata [31:0]</td>
+<td align="center">O</td>
+<td align="center">GRF 中待写入数据</td>
+</tr>
+<tr>
+<td align="center">w_inst_addr [31:0]</td>
+<td align="center">O</td>
+<td align="center">W 级 PC</td>
+</tr>
+</tbody></table>
+<h3 id="存储器外置"><a href="#存储器外置" class="headerlink" title="存储器外置"></a>存储器外置</h3><pre class="line-numbers language-verilog" data-language="verilog"><code class="language-verilog"><span class="token constant">`timescale</span> <span class="token number">1</span>ns<span class="token operator">/</span><span class="token number">1</span>ps
+
+<span class="token keyword">module</span> mips_txt<span class="token punctuation">;</span>
+
+    <span class="token keyword">reg</span> clk<span class="token punctuation">;</span>
+    <span class="token keyword">reg</span> reset<span class="token punctuation">;</span>
+
+    <span class="token keyword">wire</span> <span class="token punctuation">[</span><span class="token number">31</span><span class="token punctuation">:</span><span class="token number">0</span><span class="token punctuation">]</span> i_inst_addr<span class="token punctuation">;</span>
+    <span class="token keyword">wire</span> <span class="token punctuation">[</span><span class="token number">31</span><span class="token punctuation">:</span><span class="token number">0</span><span class="token punctuation">]</span> i_inst_rdata<span class="token punctuation">;</span>
+
+    <span class="token keyword">wire</span> <span class="token punctuation">[</span><span class="token number">31</span><span class="token punctuation">:</span><span class="token number">0</span><span class="token punctuation">]</span> m_data_addr<span class="token punctuation">;</span>
+    <span class="token keyword">wire</span> <span class="token punctuation">[</span><span class="token number">31</span><span class="token punctuation">:</span><span class="token number">0</span><span class="token punctuation">]</span> m_data_rdata<span class="token punctuation">;</span>
+    <span class="token keyword">wire</span> <span class="token punctuation">[</span><span class="token number">31</span><span class="token punctuation">:</span><span class="token number">0</span><span class="token punctuation">]</span> m_data_wdata<span class="token punctuation">;</span>
+    <span class="token keyword">wire</span> <span class="token punctuation">[</span><span class="token number">3</span> <span class="token punctuation">:</span><span class="token number">0</span><span class="token punctuation">]</span> m_data_byteen<span class="token punctuation">;</span>
+
+    <span class="token keyword">wire</span> <span class="token punctuation">[</span><span class="token number">31</span><span class="token punctuation">:</span><span class="token number">0</span><span class="token punctuation">]</span> m_inst_addr<span class="token punctuation">;</span>
+
+    <span class="token keyword">wire</span> w_grf_we<span class="token punctuation">;</span>
+    <span class="token keyword">wire</span> <span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">:</span><span class="token number">0</span><span class="token punctuation">]</span> w_grf_addr<span class="token punctuation">;</span>
+    <span class="token keyword">wire</span> <span class="token punctuation">[</span><span class="token number">31</span><span class="token punctuation">:</span><span class="token number">0</span><span class="token punctuation">]</span> w_grf_wdata<span class="token punctuation">;</span>
+
+    <span class="token keyword">wire</span> <span class="token punctuation">[</span><span class="token number">31</span><span class="token punctuation">:</span><span class="token number">0</span><span class="token punctuation">]</span> w_inst_addr<span class="token punctuation">;</span>
+
+    mips <span class="token function">uut</span><span class="token punctuation">(</span>
+        <span class="token punctuation">.</span><span class="token function">clk</span><span class="token punctuation">(</span>clk<span class="token punctuation">)</span><span class="token punctuation">,</span>
+        <span class="token punctuation">.</span><span class="token function">reset</span><span class="token punctuation">(</span>reset<span class="token punctuation">)</span><span class="token punctuation">,</span>
+
+        <span class="token punctuation">.</span><span class="token function">i_inst_addr</span><span class="token punctuation">(</span>i_inst_addr<span class="token punctuation">)</span><span class="token punctuation">,</span>
+        <span class="token punctuation">.</span><span class="token function">i_inst_rdata</span><span class="token punctuation">(</span>i_inst_rdata<span class="token punctuation">)</span><span class="token punctuation">,</span>
+
+        <span class="token punctuation">.</span><span class="token function">m_data_addr</span><span class="token punctuation">(</span>m_data_addr<span class="token punctuation">)</span><span class="token punctuation">,</span>
+        <span class="token punctuation">.</span><span class="token function">m_data_rdata</span><span class="token punctuation">(</span>m_data_rdata<span class="token punctuation">)</span><span class="token punctuation">,</span>
+        <span class="token punctuation">.</span><span class="token function">m_data_wdata</span><span class="token punctuation">(</span>m_data_wdata<span class="token punctuation">)</span><span class="token punctuation">,</span>
+        <span class="token punctuation">.</span><span class="token function">m_data_byteen</span><span class="token punctuation">(</span>m_data_byteen<span class="token punctuation">)</span><span class="token punctuation">,</span>
+
+        <span class="token punctuation">.</span><span class="token function">m_inst_addr</span><span class="token punctuation">(</span>m_inst_addr<span class="token punctuation">)</span><span class="token punctuation">,</span>
+
+        <span class="token punctuation">.</span><span class="token function">w_grf_we</span><span class="token punctuation">(</span>w_grf_we<span class="token punctuation">)</span><span class="token punctuation">,</span>
+        <span class="token punctuation">.</span><span class="token function">w_grf_addr</span><span class="token punctuation">(</span>w_grf_addr<span class="token punctuation">)</span><span class="token punctuation">,</span>
+        <span class="token punctuation">.</span><span class="token function">w_grf_wdata</span><span class="token punctuation">(</span>w_grf_wdata<span class="token punctuation">)</span><span class="token punctuation">,</span>
+
+        <span class="token punctuation">.</span><span class="token function">w_inst_addr</span><span class="token punctuation">(</span>w_inst_addr<span class="token punctuation">)</span>
+    <span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">integer</span> i<span class="token punctuation">;</span>
+    <span class="token keyword">reg</span> <span class="token punctuation">[</span><span class="token number">31</span><span class="token punctuation">:</span><span class="token number">0</span><span class="token punctuation">]</span> fixed_addr<span class="token punctuation">;</span>
+    <span class="token keyword">reg</span> <span class="token punctuation">[</span><span class="token number">31</span><span class="token punctuation">:</span><span class="token number">0</span><span class="token punctuation">]</span> fixed_wdata<span class="token punctuation">;</span>
+    <span class="token keyword">reg</span> <span class="token punctuation">[</span><span class="token number">31</span><span class="token punctuation">:</span><span class="token number">0</span><span class="token punctuation">]</span> data<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">:</span><span class="token number">4095</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">reg</span> <span class="token punctuation">[</span><span class="token number">31</span><span class="token punctuation">:</span><span class="token number">0</span><span class="token punctuation">]</span> inst<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">:</span><span class="token number">4095</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">assign</span> m_data_rdata <span class="token operator">=</span> data<span class="token punctuation">[</span>m_data_addr <span class="token operator">&gt;&gt;</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">assign</span> i_inst_rdata <span class="token operator">=</span> inst<span class="token punctuation">[</span><span class="token punctuation">(</span>i_inst_addr <span class="token operator">-</span> <span class="token number">32'h3000</span><span class="token punctuation">)</span> <span class="token operator">&gt;&gt;</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">initial</span> <span class="token keyword">begin</span>
+        <span class="token kernel-function property">$readmemh</span><span class="token punctuation">(</span><span class="token string">"code.txt"</span><span class="token punctuation">,</span> inst<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span>i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">4096</span><span class="token punctuation">;</span> i <span class="token operator">=</span> i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span> data<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">&lt;=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token keyword">end</span>
+
+    <span class="token keyword">initial</span> <span class="token keyword">begin</span>
+        clk <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        reset <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+        <span class="token number">#20</span> reset <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token keyword">end</span>
+
+    <span class="token important">always @</span><span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">)</span> <span class="token keyword">begin</span>
+        fixed_wdata <span class="token operator">=</span> data<span class="token punctuation">[</span>m_data_addr <span class="token operator">&gt;&gt;</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        fixed_addr <span class="token operator">=</span> m_data_addr <span class="token operator">&amp;</span> <span class="token number">32'hfffffffc</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>m_data_byteen<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">)</span> fixed_wdata<span class="token punctuation">[</span><span class="token number">31</span><span class="token punctuation">:</span><span class="token number">24</span><span class="token punctuation">]</span> <span class="token operator">=</span> m_data_wdata<span class="token punctuation">[</span><span class="token number">31</span><span class="token punctuation">:</span><span class="token number">24</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>m_data_byteen<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">)</span> fixed_wdata<span class="token punctuation">[</span><span class="token number">23</span><span class="token punctuation">:</span><span class="token number">16</span><span class="token punctuation">]</span> <span class="token operator">=</span> m_data_wdata<span class="token punctuation">[</span><span class="token number">23</span><span class="token punctuation">:</span><span class="token number">16</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>m_data_byteen<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span> fixed_wdata<span class="token punctuation">[</span><span class="token number">15</span><span class="token punctuation">:</span> <span class="token number">8</span><span class="token punctuation">]</span> <span class="token operator">=</span> m_data_wdata<span class="token punctuation">[</span><span class="token number">15</span><span class="token punctuation">:</span> <span class="token number">8</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>m_data_byteen<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span> fixed_wdata<span class="token punctuation">[</span><span class="token number">7</span> <span class="token punctuation">:</span> <span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> m_data_wdata<span class="token punctuation">[</span><span class="token number">7</span> <span class="token punctuation">:</span> <span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">end</span>
+
+    <span class="token important">always @</span><span class="token punctuation">(</span><span class="token keyword">posedge</span> clk<span class="token punctuation">)</span> <span class="token keyword">begin</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>reset<span class="token punctuation">)</span> <span class="token keyword">for</span> <span class="token punctuation">(</span>i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">4096</span><span class="token punctuation">;</span> i <span class="token operator">=</span> i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span> data<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">&lt;=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">|</span>m_data_byteen<span class="token punctuation">)</span> <span class="token keyword">begin</span>
+            data<span class="token punctuation">[</span>fixed_addr <span class="token operator">&gt;&gt;</span> <span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">&lt;=</span> fixed_wdata<span class="token punctuation">;</span>
+            <span class="token kernel-function property">$display</span><span class="token punctuation">(</span><span class="token string">"%d@%h: *%h &lt;= %h"</span><span class="token punctuation">,</span> <span class="token kernel-function property">$time</span><span class="token punctuation">,</span> m_inst_addr<span class="token punctuation">,</span> fixed_addr<span class="token punctuation">,</span> fixed_wdata<span class="token punctuation">)</span><span class="token punctuation">;</span>
+				<span class="token comment">//$display("@%h: *%h &lt;= %h", m_inst_addr, fixed_addr, fixed_wdata);</span>
+        <span class="token keyword">end</span>
+    <span class="token keyword">end</span>
+
+    <span class="token important">always @</span><span class="token punctuation">(</span><span class="token keyword">posedge</span> clk<span class="token punctuation">)</span> <span class="token keyword">begin</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">~</span>reset<span class="token punctuation">)</span> <span class="token keyword">begin</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>w_grf_we <span class="token operator">&amp;&amp;</span> <span class="token punctuation">(</span>w_grf_addr <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">begin</span>
+                <span class="token kernel-function property">$display</span><span class="token punctuation">(</span><span class="token string">"%d@%h: $%d &lt;= %h"</span><span class="token punctuation">,</span> <span class="token kernel-function property">$time</span><span class="token punctuation">,</span> w_inst_addr<span class="token punctuation">,</span> w_grf_addr<span class="token punctuation">,</span> w_grf_wdata<span class="token punctuation">)</span><span class="token punctuation">;</span>
+					 <span class="token comment">//$display("@%h: $%d &lt;= %h", w_inst_addr, w_grf_addr, w_grf_wdata);</span>
+            <span class="token keyword">end</span>
+        <span class="token keyword">end</span>
+    <span class="token keyword">end</span>
+
+    <span class="token important">always</span> <span class="token number">#2</span> clk <span class="token operator">&lt;=</span> <span class="token operator">~</span>clk<span class="token punctuation">;</span>
+
+<span class="token keyword">endmodule</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
 <h3 id="取指阶段（Fetch）"><a href="#取指阶段（Fetch）" class="headerlink" title="取指阶段（Fetch）"></a>取指阶段（Fetch）</h3><h4 id="PC"><a href="#PC" class="headerlink" title="PC"></a>PC</h4><p>这里的 $PC$ 采用下面这种方式直接<strong>在顶层模块 $mips$ 中</strong>实现：</p>
 <pre class="line-numbers language-verilog" data-language="verilog"><code class="language-verilog"><span class="token keyword">reg</span> <span class="token punctuation">[</span><span class="token number">31</span><span class="token punctuation">:</span><span class="token number">0</span><span class="token punctuation">]</span> PC<span class="token punctuation">;</span>
 
@@ -376,29 +563,10 @@
     <span class="token keyword">end</span>
 <span class="token keyword">end</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h4 id="im-v"><a href="#im-v" class="headerlink" title="im.v"></a>im.v</h4><h5 id="端口定义"><a href="#端口定义" class="headerlink" title="端口定义"></a>端口定义</h5><table>
-<thead>
-<tr>
-<th align="center">名称</th>
-<th align="center">描述</th>
-<th align="center">位宽</th>
-<th align="center">方向</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">PC</td>
-<td align="center">当前指令地址</td>
-<td align="center">32</td>
-<td align="center">I</td>
-</tr>
-<tr>
-<td align="center">instr</td>
-<td align="center">取出的指令</td>
-<td align="center">32</td>
-<td align="center">O</td>
-</tr>
-</tbody></table>
-<h4 id="npc-v"><a href="#npc-v" class="headerlink" title="npc.v"></a>npc.v</h4><h5 id="端口定义-1"><a href="#端口定义-1" class="headerlink" title="端口定义"></a>端口定义</h5><table>
+<h4 id="npc-v"><a href="#npc-v" class="headerlink" title="npc.v"></a>npc.v</h4><ul>
+<li>端口定义</li>
+</ul>
+<table>
 <thead>
 <tr>
 <th align="center">名称</th>
@@ -410,6 +578,18 @@
 <tbody><tr>
 <td align="center">Stall</td>
 <td align="center">暂停信号</td>
+<td align="center">1</td>
+<td align="center">I</td>
+</tr>
+<tr>
+<td align="center">HILO_BUSY</td>
+<td align="center">乘除指令阻塞信号</td>
+<td align="center">1</td>
+<td align="center">I</td>
+</tr>
+<tr>
+<td align="center">isHILO</td>
+<td align="center">乘除指令判断信号</td>
 <td align="center">1</td>
 <td align="center">I</td>
 </tr>
@@ -432,8 +612,8 @@
 <td align="center">I</td>
 </tr>
 <tr>
-<td align="center">ra</td>
-<td align="center">寄存器的值</td>
+<td align="center">RD1</td>
+<td align="center">寄存器读数据1</td>
 <td align="center">32</td>
 <td align="center">I</td>
 </tr>
@@ -446,12 +626,6 @@
 <tr>
 <td align="center">isSame</td>
 <td align="center">相等比较信号</td>
-<td align="center">1</td>
-<td align="center">I</td>
-</tr>
-<tr>
-<td align="center">isNega</td>
-<td align="center">相反比较信号</td>
 <td align="center">1</td>
 <td align="center">I</td>
 </tr>
@@ -469,10 +643,13 @@
 </tr>
 </tbody></table>
 <ul>
-<li>若暂停信号 $Stall$ 有效，则 $NPC$ 保持不变</li>
+<li>若暂停信号 $Stall$ 有效或信号 $HILO_BUSY$ 和 $isHILO$ <strong>同时</strong>有效，则 $NPC$ 保持不变</li>
 <li>若对应指令满足清空延迟槽条件，则输出清空延迟槽信号 $flush$ 为 $1$</li>
 </ul>
-<h4 id="d-reg-v"><a href="#d-reg-v" class="headerlink" title="d_reg.v"></a>d_reg.v</h4><h5 id="端口定义-2"><a href="#端口定义-2" class="headerlink" title="端口定义"></a>端口定义</h5><table>
+<h4 id="d-reg-v"><a href="#d-reg-v" class="headerlink" title="d_reg.v"></a>d_reg.v</h4><ul>
+<li>端口定义</li>
+</ul>
+<table>
 <thead>
 <tr>
 <th align="center">名称</th>
@@ -496,6 +673,18 @@
 <tr>
 <td align="center">Stall</td>
 <td align="center">暂停信号</td>
+<td align="center">1</td>
+<td align="center">I</td>
+</tr>
+<tr>
+<td align="center">HILO_BUSY</td>
+<td align="center">乘除指令阻塞信号</td>
+<td align="center">1</td>
+<td align="center">I</td>
+</tr>
+<tr>
+<td align="center">isHILO</td>
+<td align="center">乘除指令判断信号</td>
 <td align="center">1</td>
 <td align="center">I</td>
 </tr>
@@ -531,7 +720,7 @@
 </tr>
 </tbody></table>
 <ul>
-<li>若暂停信号 $Stall$ 有效，则 $instr_out$ 与 $PC_out$ 保持不变</li>
+<li>若暂停信号 $Stall$ 有效或信号 $HILO_BUSY$ 和 $isHILO$ <strong>同时</strong>有效，则 $instr_out$ 与 $PC_out$ 保持不变</li>
 <li>若清空延迟槽信号 $flush$ 有效<strong>且暂停信号 $Stall$ 无效</strong>，则清空 $D$ 级寄存器</li>
 </ul>
 <h3 id="译码阶段（Decord）"><a href="#译码阶段（Decord）" class="headerlink" title="译码阶段（Decord）"></a>译码阶段（Decord）</h3><h4 id="Stall"><a href="#Stall" class="headerlink" title="Stall"></a>Stall</h4><p>当一个指令到达 $D$ 级后，我们需要将它的 $T_{use}$ 值与后面每一级的 $T_{new}$ 进行比较，并进行 $A$ 值的校验。</p>
@@ -549,7 +738,10 @@
     				<span class="token punctuation">(</span>rt <span class="token operator">!=</span> <span class="token number">5'd0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token keyword">assign</span> Stall <span class="token operator">=</span> Stall_RS <span class="token operator">|</span> Stall_RT<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h4 id="ctrl-v"><a href="#ctrl-v" class="headerlink" title="ctrl.v"></a>ctrl.v</h4><h5 id="端口定义-3"><a href="#端口定义-3" class="headerlink" title="端口定义"></a>端口定义</h5><table>
+<h4 id="ctrl-v"><a href="#ctrl-v" class="headerlink" title="ctrl.v"></a>ctrl.v</h4><ul>
+<li>端口定义</li>
+</ul>
+<table>
 <thead>
 <tr>
 <th align="center">名称</th>
@@ -577,7 +769,7 @@
 <td align="center">O</td>
 </tr>
 <tr>
-<td align="center">ExtOP</td>
+<td align="center">ExtOp</td>
 <td align="center">位扩展控制码</td>
 <td align="center">2</td>
 <td align="center">O</td>
@@ -595,8 +787,26 @@
 <td align="center">O</td>
 </tr>
 <tr>
+<td align="center">isHILO</td>
+<td align="center">乘除指令信号</td>
+<td align="center">1</td>
+<td align="center">O</td>
+</tr>
+<tr>
+<td align="center">HILOtype</td>
+<td align="center">乘除指令信号类型</td>
+<td align="center">4</td>
+<td align="center">O</td>
+</tr>
+<tr>
 <td align="center">RegWrite</td>
 <td align="center">寄存器写使能</td>
+<td align="center">1</td>
+<td align="center">O</td>
+</tr>
+<tr>
+<td align="center">MemWrite</td>
+<td align="center">数据存储器写使能</td>
 <td align="center">1</td>
 <td align="center">O</td>
 </tr>
@@ -637,10 +847,11 @@
 <td align="center">O</td>
 </tr>
 </tbody></table>
+<p>这里采用了<strong>控制信号驱动型</strong>的<strong>集中式译码</strong></p>
 <ul>
-<li>这里采用了<strong>控制信号驱动型</strong>的<strong>集中式译码</strong></li>
+<li>控制信号</li>
 </ul>
-<h5 id="控制信号"><a href="#控制信号" class="headerlink" title="控制信号"></a>控制信号</h5><table>
+<table>
 <thead>
 <tr>
 <th align="center"></th>
@@ -651,20 +862,36 @@
 <th align="center">addi(addiu)</th>
 <th align="center">andi(ori)</th>
 <th align="center">lui</th>
-<th align="center">lw</th>
-<th align="center">sw</th>
+<th align="center">mult/div</th>
+<th align="center">mt</th>
+<th align="center">mf</th>
+<th align="center">load</th>
+<th align="center">store</th>
+<th align="center">beq</th>
+<th align="center">bne</th>
+<th align="center">jal</th>
+<th align="center">jr</th>
+<th align="center">j</th>
 </tr>
 </thead>
 <tbody><tr>
 <td align="center"><strong>RegDst</strong></td>
-<td align="center">01</td>
-<td align="center">01</td>
-<td align="center">01</td>
-<td align="center">01</td>
-<td align="center">00</td>
-<td align="center">00</td>
-<td align="center">00</td>
-<td align="center">00</td>
+<td align="center">rd</td>
+<td align="center">rd</td>
+<td align="center">rd</td>
+<td align="center">rd</td>
+<td align="center">rt</td>
+<td align="center">rt</td>
+<td align="center">rt</td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="center">rd</td>
+<td align="center">rt</td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="center">ra</td>
+<td align="center">X</td>
 <td align="center">X</td>
 </tr>
 <tr>
@@ -676,8 +903,16 @@
 <td align="center">SIGN</td>
 <td align="center">ZERO</td>
 <td align="center">HIGN</td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="center">X</td>
 <td align="center">SIGN</td>
 <td align="center">SIGN</td>
+<td align="center">SIGN</td>
+<td align="center">SIGN</td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="center">X</td>
 </tr>
 <tr>
 <td align="center"><strong>ALUSrc</strong></td>
@@ -688,8 +923,16 @@
 <td align="center">1</td>
 <td align="center">1</td>
 <td align="center">1</td>
+<td align="center">0</td>
+<td align="center">X</td>
+<td align="center">X</td>
 <td align="center">1</td>
 <td align="center">1</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="center">X</td>
 </tr>
 <tr>
 <td align="center"><strong>ALUOP</strong></td>
@@ -700,8 +943,16 @@
 <td align="center">ADD</td>
 <td align="center">AND(OR)</td>
 <td align="center">ADD</td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="center">X</td>
 <td align="center">ADD</td>
 <td align="center">ADD</td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="center">X</td>
 </tr>
 <tr>
 <td align="center"><strong>RegWrite</strong></td>
@@ -712,31 +963,35 @@
 <td align="center">1</td>
 <td align="center">1</td>
 <td align="center">1</td>
+<td align="center">0</td>
+<td align="center">0</td>
 <td align="center">1</td>
-<td align="center">0</td>
-</tr>
-<tr>
-<td align="center"><strong>MemWrite</strong></td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">0</td>
+<td align="center">1</td>
 <td align="center">0</td>
 <td align="center">0</td>
 <td align="center">0</td>
 <td align="center">1</td>
+<td align="center">0</td>
+<td align="center">0</td>
 </tr>
 <tr>
 <td align="center"><strong>MemtoReg</strong></td>
-<td align="center">00</td>
-<td align="center">00</td>
-<td align="center">00</td>
-<td align="center">00</td>
-<td align="center">00</td>
-<td align="center">00</td>
-<td align="center">00</td>
-<td align="center">01</td>
+<td align="center">ALU</td>
+<td align="center">ALU</td>
+<td align="center">ALU</td>
+<td align="center">ALU</td>
+<td align="center">ALU</td>
+<td align="center">ALU</td>
+<td align="center">ALU</td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="center">HILO</td>
+<td align="center">DM</td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="center">PC</td>
+<td align="center">X</td>
 <td align="center">X</td>
 </tr>
 <tr>
@@ -750,6 +1005,14 @@
 <td align="center">PC4</td>
 <td align="center">PC4</td>
 <td align="center">PC4</td>
+<td align="center">PC4</td>
+<td align="center">PC4</td>
+<td align="center">PC4</td>
+<td align="center">BEQ</td>
+<td align="center">BNE</td>
+<td align="center">J</td>
+<td align="center">JR</td>
+<td align="center">J</td>
 </tr>
 <tr>
 <td align="center"><strong>T_use_rs</strong></td>
@@ -762,6 +1025,14 @@
 <td align="center">3</td>
 <td align="center">1</td>
 <td align="center">1</td>
+<td align="center">3</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">3</td>
+<td align="center">0</td>
+<td align="center">3</td>
 </tr>
 <tr>
 <td align="center"><strong>T_use_rt</strong></td>
@@ -772,17 +1043,29 @@
 <td align="center">3</td>
 <td align="center">3</td>
 <td align="center">3</td>
+<td align="center">1</td>
+<td align="center">3</td>
+<td align="center">3</td>
 <td align="center">3</td>
 <td align="center">2</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">3</td>
+<td align="center">3</td>
+<td align="center">3</td>
 </tr>
 </tbody></table>
-<ul>
+<ol>
+<li>信号 $isHILO$ 与 $HILOtype$ 只对指令 $mult, multu, div, divu, mthi, mtlo, mfhi, mflo$ 生效，未列于表中</li>
 <li>信号 $storeOP$ 只对指令 $sw(2’d1), sh(2’d2), sb(2’d3)$ 生效，未列于表中</li>
 <li>信号 $DextOP$ 只对指令 $lw(dext_lw), lh(dext_lh), lhu(dext_lhu), lb(dext_lb), lbu(dext_lbu)$ 生效，未列于表中</li>
 <li>指令的需求时间 $T_{use}$ 是指这条指令位于 $D$ 级的时候，<strong>再经过多少个时钟周期就必须要使用相应的数据</strong></li>
 <li>实际上， $T_{use}$ 的最大值为 $2’d2$ ，当指令用不到 $GPR[rs]$ 或 $GPR[rt]$ 时，我们将对应的置 $T_{use}$ 为 $2’d3$ ，这并不会影响我们对转发和暂停的判断</li>
+</ol>
+<h4 id="grf-v"><a href="#grf-v" class="headerlink" title="grf.v"></a>grf.v</h4><ul>
+<li>端口定义</li>
 </ul>
-<h4 id="grf-v"><a href="#grf-v" class="headerlink" title="grf.v"></a>grf.v</h4><h5 id="端口定义-4"><a href="#端口定义-4" class="headerlink" title="端口定义"></a>端口定义</h5><table>
+<table>
 <thead>
 <tr>
 <th align="center">名称</th>
@@ -852,7 +1135,10 @@
 <td align="center">O</td>
 </tr>
 </tbody></table>
-<h4 id="ext-v"><a href="#ext-v" class="headerlink" title="ext.v"></a>ext.v</h4><h5 id="端口定义-5"><a href="#端口定义-5" class="headerlink" title="端口定义"></a>端口定义</h5><table>
+<h4 id="ext-v"><a href="#ext-v" class="headerlink" title="ext.v"></a>ext.v</h4><ul>
+<li>端口定义</li>
+</ul>
+<table>
 <thead>
 <tr>
 <th align="center">名称</th>
@@ -880,7 +1166,10 @@
 <td align="center">O</td>
 </tr>
 </tbody></table>
-<h4 id="cmp-v"><a href="#cmp-v" class="headerlink" title="cmp.v"></a>cmp.v</h4><h5 id="端口定义-6"><a href="#端口定义-6" class="headerlink" title="端口定义"></a>端口定义</h5><table>
+<h4 id="cmp-v"><a href="#cmp-v" class="headerlink" title="cmp.v"></a>cmp.v</h4><ul>
+<li>端口定义</li>
+</ul>
+<table>
 <thead>
 <tr>
 <th align="center">名称</th>
@@ -907,17 +1196,14 @@
 <td align="center">1</td>
 <td align="center">O</td>
 </tr>
-<tr>
-<td align="center">isNega</td>
-<td align="center">相反比较信号</td>
-<td align="center">1</td>
-<td align="center">O</td>
-</tr>
 </tbody></table>
 <ul>
 <li>这里添加一个 $CMP$ 模块是为了将**$B$ 类跳转指令的<strong>判定</strong>提前至 $D$ 级**来进行，不再使用 $E$ 级的 $ALU$ 来进行判定</li>
 </ul>
-<h4 id="e-reg-v"><a href="#e-reg-v" class="headerlink" title="e_reg.v"></a>e_reg.v</h4><h5 id="端口定义-7"><a href="#端口定义-7" class="headerlink" title="端口定义"></a>端口定义</h5><table>
+<h4 id="e-reg-v"><a href="#e-reg-v" class="headerlink" title="e_reg.v"></a>e_reg.v</h4><ul>
+<li>端口定义</li>
+</ul>
+<table>
 <thead>
 <tr>
 <th align="center">名称</th>
@@ -941,6 +1227,18 @@
 <tr>
 <td align="center">Stall</td>
 <td align="center">暂停信号</td>
+<td align="center">1</td>
+<td align="center">I</td>
+</tr>
+<tr>
+<td align="center">HILO_BUSY</td>
+<td align="center">乘除指令阻塞信号</td>
+<td align="center">1</td>
+<td align="center">I</td>
+</tr>
+<tr>
+<td align="center">isHILO</td>
+<td align="center">乘除指令判断信号</td>
 <td align="center">1</td>
 <td align="center">I</td>
 </tr>
@@ -1133,9 +1431,12 @@
 </tbody></table>
 <ul>
 <li>指令的供给时间 $T_{new}$ 是指位于<strong>某个流水级</strong>的<strong>某个指令</strong>，它经过多少个时钟周期可以算出结果并且<strong>存储到流水级寄存器里</strong></li>
-<li>若暂停信号 $Stall$ 有效，则清空 $E_REG$ (效果同 $reset$ )</li>
+<li>若暂停信号 $Stall$ 有效或信号 HILO_BUSY 和 isHILO <strong>同时</strong>有效，则清空 $E_REG$ (效果同 $reset$ )</li>
 </ul>
-<h3 id="执行阶段（Excute）"><a href="#执行阶段（Excute）" class="headerlink" title="执行阶段（Excute）"></a>执行阶段（Excute）</h3><h4 id="alu-v"><a href="#alu-v" class="headerlink" title="alu.v"></a>alu.v</h4><h5 id="端口定义-8"><a href="#端口定义-8" class="headerlink" title="端口定义"></a>端口定义</h5><table>
+<h3 id="执行阶段（Excute）"><a href="#执行阶段（Excute）" class="headerlink" title="执行阶段（Excute）"></a>执行阶段（Excute）</h3><h4 id="alu-v"><a href="#alu-v" class="headerlink" title="alu.v"></a>alu.v</h4><ul>
+<li>端口定义</li>
+</ul>
+<table>
 <thead>
 <tr>
 <th align="center">名称</th>
@@ -1174,14 +1475,71 @@
 <td align="center">32</td>
 <td align="center">O</td>
 </tr>
+</tbody></table>
+<h4 id="md-v"><a href="#md-v" class="headerlink" title="md.v"></a>md.v</h4><ul>
+<li>端口定义</li>
+</ul>
+<table>
+<thead>
 <tr>
-<td align="center">isZero</td>
-<td align="center">零判断</td>
+<th align="center">名称</th>
+<th align="center">描述</th>
+<th align="center">位宽</th>
+<th align="center">方向</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">clk</td>
+<td align="center">时钟信号</td>
+<td align="center">1</td>
+<td align="center">I</td>
+</tr>
+<tr>
+<td align="center">reset</td>
+<td align="center">同步复位信号</td>
+<td align="center">1</td>
+<td align="center">I</td>
+</tr>
+<tr>
+<td align="center">HILOtype</td>
+<td align="center">乘除指令类型</td>
+<td align="center">4</td>
+<td align="center">I</td>
+</tr>
+<tr>
+<td align="center">A</td>
+<td align="center">操作数A</td>
+<td align="center">32</td>
+<td align="center">I</td>
+</tr>
+<tr>
+<td align="center">B</td>
+<td align="center">操作数B</td>
+<td align="center">32</td>
+<td align="center">I</td>
+</tr>
+<tr>
+<td align="center">HILO_BUSY</td>
+<td align="center">乘除模块BUSY信号</td>
 <td align="center">1</td>
 <td align="center">O</td>
 </tr>
+<tr>
+<td align="center">HILO</td>
+<td align="center">乘除模块输出</td>
+<td align="center">32</td>
+<td align="center">O</td>
+</tr>
 </tbody></table>
-<h4 id="m-meg-v"><a href="#m-meg-v" class="headerlink" title="m_meg.v"></a>m_meg.v</h4><h5 id="端口定义-9"><a href="#端口定义-9" class="headerlink" title="端口定义"></a>端口定义</h5><table>
+<ol>
+<li>乘除指令（$mult,multu,div,divu$）会产生有效一个周期的 $start$ 信号</li>
+<li>乘法信号会在 $start$ 后产生有效5个周期的 $busy$ 信号，除法信号会在 $start$ 后产生有效10个周期的 $busy$ 信号</li>
+<li>在 $busy$ 的最后一个周期才会将计算结果写入 $HI/LO$ 寄存器</li>
+</ol>
+<h4 id="m-meg-v"><a href="#m-meg-v" class="headerlink" title="m_meg.v"></a>m_meg.v</h4><ul>
+<li>端口定义</li>
+</ul>
+<table>
 <thead>
 <tr>
 <th align="center">名称</th>
@@ -1335,7 +1693,10 @@
 <td align="center">O</td>
 </tr>
 </tbody></table>
-<h3 id="存储阶段（Memory"><a href="#存储阶段（Memory" class="headerlink" title="存储阶段（Memory)"></a>存储阶段（Memory)</h3><h4 id="dm-v"><a href="#dm-v" class="headerlink" title="dm.v"></a>dm.v</h4><h5 id="端口定义-10"><a href="#端口定义-10" class="headerlink" title="端口定义"></a>端口定义</h5><table>
+<h3 id="存储阶段（Memory"><a href="#存储阶段（Memory" class="headerlink" title="存储阶段（Memory)"></a>存储阶段（Memory)</h3><h4 id="dext-v"><a href="#dext-v" class="headerlink" title="dext.v"></a>dext.v</h4><ul>
+<li>端口定义</li>
+</ul>
+<table>
 <thead>
 <tr>
 <th align="center">名称</th>
@@ -1345,52 +1706,34 @@
 </tr>
 </thead>
 <tbody><tr>
-<td align="center">clk</td>
-<td align="center">时钟信号</td>
-<td align="center">1</td>
-<td align="center">I</td>
-</tr>
-<tr>
-<td align="center">reset</td>
-<td align="center">同步复位信号</td>
-<td align="center">1</td>
-<td align="center">I</td>
-</tr>
-<tr>
-<td align="center">PC</td>
-<td align="center">M级PC</td>
-<td align="center">32</td>
-<td align="center">I</td>
-</tr>
-<tr>
 <td align="center">A</td>
-<td align="center">数据存储器读写地址</td>
-<td align="center">5</td>
-<td align="center">I</td>
-</tr>
-<tr>
-<td align="center">WD</td>
-<td align="center">DM写数据</td>
+<td align="center">数据存储器读地址的低2位</td>
 <td align="center">2</td>
 <td align="center">I</td>
 </tr>
 <tr>
-<td align="center">byteen</td>
-<td align="center">数据存储器字节写使能</td>
-<td align="center">4</td>
+<td align="center">D_in</td>
+<td align="center">数据存储器读地址</td>
+<td align="center">32</td>
 <td align="center">I</td>
 </tr>
 <tr>
-<td align="center">RD</td>
-<td align="center">DM读数据</td>
+<td align="center">dextOP</td>
+<td align="center">数据扩展信号</td>
+<td align="center">3</td>
+<td align="center">I</td>
+</tr>
+<tr>
+<td align="center">D_out</td>
+<td align="center">数据扩展结果</td>
 <td align="center">32</td>
 <td align="center">O</td>
 </tr>
 </tbody></table>
-<ul>
-<li>这里可以用 $|byteen$ 来代替原先的数据存储器写使能信号 $MemWrite$</li>
+<h4 id="w-reg-v"><a href="#w-reg-v" class="headerlink" title="w_reg.v"></a>w_reg.v</h4><ul>
+<li>端口定义</li>
 </ul>
-<h4 id="w-reg-v"><a href="#w-reg-v" class="headerlink" title="w_reg.v"></a>w_reg.v</h4><h5 id="端口定义-11"><a href="#端口定义-11" class="headerlink" title="端口定义"></a>端口定义</h5><table>
+<table>
 <thead>
 <tr>
 <th align="center">名称</th>
@@ -1496,350 +1839,86 @@
 <td align="center">O</td>
 </tr>
 </tbody></table>
-<h2 id="流水线冒险"><a href="#流水线冒险" class="headerlink" title="流水线冒险"></a>流水线冒险</h2><h3 id="冒险的种类"><a href="#冒险的种类" class="headerlink" title="冒险的种类"></a>冒险的种类</h3><h4 id="结构冒险"><a href="#结构冒险" class="headerlink" title="结构冒险"></a>结构冒险</h4><p>结构冒险是指<strong>不同指令同时需要使用同一资源</strong>的情况。例如在普林斯顿结构中，指令存储器和数据存储器是同一存储器，在取指阶段和存储阶段都需要使用这个存储器，这时便产生了结构冒险。我们的实验采用哈佛体系结构，将指令存储器和数据存储器分开，因此不存在这种结构冒险。</p>
-<p>另一种结构冒险在于寄存器文件需要在 $D$ 级和 $W$ 级同时被使用（读写）时并且读和写的寄存器为同一个寄存器时。</p>
-<h4 id="控制冒险"><a href="#控制冒险" class="headerlink" title="控制冒险"></a>控制冒险</h4><p>控制冒险，是指<strong>分支指令（如 $beq$ ）的判断结果会影响接下来指令的执行流</strong>的情况。在判断结果产生之前，我们无法预测分支是否会发生。然而，此时流水线还会继续取指，让后续指令进入流水线。这时就有可能导致错误的产生，即不该被执行的指令进入到了指令的执行流中。</p>
-<h4 id="数据冒险"><a href="#数据冒险" class="headerlink" title="数据冒险"></a>数据冒险</h4><p>流水线之所以会产生数据冒险，就是因为后面指令需求的数据，正好就是前面指令供给的数据，而后面指令在需要使用数据时，前面供给的数据还没有存入寄存器堆，从而导致后面的指令不能正常地读取到正确的数据。</p>
-<h2 id="思考题"><a href="#思考题" class="headerlink" title="思考题"></a>思考题</h2><p><em>1、我们使用提前分支判断的方法尽早产生结果来减少因不确定而带来的开销，但实际上这种方法并非总能提高效率，请从流水线冒险的角度思考其原因并给出一个指令序列的例子。</em></p>
-<p>答：将分支判断提前至 $D$ 级进行时，我们常常需要利用 $E$ 级 $ALU$ 计算的结果，而这个结果在下一个周期才能存入 $E$ 级寄存器，这时会使得流水线被<strong>阻塞</strong>一个周期，流水线的效率受到了一定的影响。</p>
-<pre class="line-numbers language-none"><code class="language-none">ori  $t0, $0, 0x1
-beq  $t0, $0, loop
-nop
-loop:
-...<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<p><em>2、因为延迟槽的存在，对于 jal 等需要将指令地址写入寄存器的指令，要写回 PC + 8，请思考为什么这样设计？</em></p>
-<p>答：因为地址为 $PC + 4$ 的指令位于延迟槽中，一定会被执行，跳转时要跳转到的指令地址为其后一条指令，即地址为 $PC + 8$ 的指令。</p>
-<p><em>3、我们要求大家所有转发数据都来源于<strong>流水寄存器</strong>而不能是功能部件（如 DM 、 ALU ），请思考为什么？</em></p>
-<p>答：若不这样做，会导致我们的流水线不能正常地<strong>并行</strong>运行，而是会将某两个流水级<strong>串行</strong>运行。这样降低了流水线工作的效率。</p>
-<p><em>4、我们为什么要使用 GPR 内部转发？该如何实现？</em></p>
-<p>答：因为 $GPR$ 既属于 $D$ 级，也属于 $W$ 级。当一条指令在 $D$ 级需要读出寄存器内的数据时，若此时位于 W 级的指令正在写寄存器，就可以利用 $GPR$ 的内部转发将这个写数据直接读出。</p>
-<p><em>5、我们转发时数据的需求者和供给者可能来源于哪些位置？共有哪些转发数据通路？</em></p>
-<p>答：需求者可能来源于 $D$ 、 $E$ 、 $M$ 级，供给者可能来源于 $E$ 、 $M$ 、 $W$ 级。</p>
-<p>转发数据通路有： $D &lt;- E$ , $D &lt;- M$ , $D &lt;- W$ , $E &lt;- M$ , $E &lt;- W$ , $M &lt;- W$ 。</p>
-<p><em>6、在课上测试时，我们需要你现场实现新的指令，对于这些新的指令，你可能需要在原有的数据通路上做哪些扩展或修改？提示：你可以对指令进行分类，思考每一类指令可能修改或扩展哪些位置。</em></p>
-<p>答：课上指令大致可以分为计算类指令、条件跳转类指令、条件访存类指令。</p>
+<h2 id="思考题"><a href="#思考题" class="headerlink" title="思考题"></a>思考题</h2><ol>
+<li><p>为什么需要有单独的乘除法部件而不是整合进 ALU？为何需要有独立的 HI、LO 寄存器？</p>
+<p>答：乘除法需要若干个周期来完成，且需要将计算结果存入 HI、 LO 寄存器中。 HI 、 LO 的值只有在遇到 $mfhi,mflo$ 指令时才取出，且遇到 $mthi,mtlo$ 指令时要将数据存入 HI、LO 寄存器中。</p>
+</li>
+<li><p>真实的流水线 CPU 是如何使用实现乘除法的？请查阅相关资料进行简单说明。</p>
+<p>答：</p>
 <ul>
-<li><p>对于计算类指令，一般情况下只需要在译码时添加一个 $ALUOp$ ，在 $ALU$ 中来实现其运算操作即可。</p>
+<li><p>乘法</p>
+<p>32位被乘数寄存器(简称A)初始化为乘法运算的被乘数，64位积寄存器 (简称B)高32位置零，用来存放乘积，低32位初始化为乘数。进行32次迭代，对于每次迭代：</p>
+<img src="/2023/03/22/buaa-co-2022-p6/CPU%E4%B9%98%E6%B3%95.png" class="" title="CPU乘法">
+
+<p>有符号乘法只需另外计算符号位即可</p>
 </li>
-<li><p>对于条件跳转类指令，可以在译码时添加一个 $nPC_sel$ ，在 $NPC$ 模块中实现其对应的 $NPC$ 值，必要时应在 $NPC$ 以及 $CMP$ 模块中加入一些控制信号来辅助判断。比如可以添加 $flush$ 信号来判断是否需要清空延迟槽。</p>
-</li>
-<li><p>对于条件访存类指令，可能会增加 $GPR[rs]$ 值的流水，可能会因为写入的不确定性导致转发数据需要额外的判断。</p>
+<li><p>除法</p>
+<p>32位商寄存器全部置零，32位除数寄存器填充32位除数，65位余数寄存器左半部分置零，右半部分填充32位被除数。处理结构图：</p>
+<img src="/2023/03/22/buaa-co-2022-p6/CPU%E9%99%A4%E6%B3%95.png" class="" title="CPU除法">
+
+<p>有符号除法只需另外计算符号位即可</p>
 </li>
 </ul>
-<p><em>7、简要描述你的译码器架构，并思考该架构的优势以及不足。</em></p>
-<p>答：我的译码器采用的是<strong>控制信号驱动型</strong>的<strong>集中式译码</strong>。</p>
-<p>优势为只需要在 $D$ 级进行一次译码即可，比较简单粗暴，且指令数较多时代码量不见得很多。</p>
-<p>不足为后续每一级流水级寄存器都要传递大量的控制信号，写起来比较繁琐复杂<del>（已经深刻体会到了）</del>。</p>
-<h2 id="课上指令"><a href="#课上指令" class="headerlink" title="课上指令"></a>课上指令</h2><h3 id="BONALL"><a href="#BONALL" class="headerlink" title="BONALL"></a>BONALL</h3><p>先<strong>链接</strong>。如果 $GPR[rs]$ 和 $GPR[rt]$ 互为相反数，则跳转，否则<strong>清空延迟槽</strong>。</p>
-<pre class="line-numbers language-none"><code class="language-none">ori  $7, $0, 0x1
-ori  $8, $0, 0x2
-sub  $9, $7, $8
-beq  $9, $7, loop1
-ori  $10, $0, 0x9999
-ori  $10, $0, 0x8888
-loop1:
-ori  $10, $0, 0x7777
-nop
-nop
-nop
-beq  $9, $8, loop2
-ori  $11, $0, 0x9999
-ori  $11, $0, 0x8888
-loop2:
-ori  $11, $0, 0x7777
-nop<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-
-
-<h3 id="由补码求原码"><a href="#由补码求原码" class="headerlink" title="由补码求原码"></a>由补码求原码</h3><pre class="line-numbers language-verilog" data-language="verilog"><code class="language-verilog"><span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token kernel-function property">$signed</span><span class="token punctuation">(</span>A<span class="token punctuation">)</span> <span class="token operator">&gt;</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">begin</span>
-    Result <span class="token operator">=</span> A<span class="token punctuation">;</span>
-<span class="token keyword">end</span>
-<span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>A <span class="token operator">==</span> <span class="token number">32'b0</span><span class="token punctuation">)</span> <span class="token keyword">begin</span>
-    Result <span class="token operator">=</span> <span class="token number">32'h8000_0000</span><span class="token punctuation">;</span> 
-<span class="token keyword">end</span>
-<span class="token keyword">else</span> <span class="token keyword">begin</span>
-    Result <span class="token operator">=</span> <span class="token operator">{</span>A<span class="token punctuation">[</span><span class="token number">31</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token operator">~</span><span class="token punctuation">(</span>A<span class="token punctuation">[</span><span class="token number">30</span><span class="token punctuation">:</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">-</span> <span class="token number">31'h1</span><span class="token punctuation">)</span><span class="token operator">}</span><span class="token punctuation">;</span>
-<span class="token keyword">end</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-
-
-<h2 id="测试数据"><a href="#测试数据" class="headerlink" title="测试数据"></a>测试数据</h2><p>接收新数据的流水级&lt;-发射新数据的流水级</p>
-<h3 id="M-lt-W"><a href="#M-lt-W" class="headerlink" title="M <- W"></a>M &lt;- W</h3><p>M级要接收数据：</p>
-<ul>
-<li>FW_DM_WD_out</li>
-</ul>
-<p>W级可发射数据：</p>
-<ul>
-<li>PC_W + 32’h8</li>
-<li>ALU_C_W</li>
-</ul>
-<h3 id="E-lt-W"><a href="#E-lt-W" class="headerlink" title="E <- W"></a>E &lt;- W</h3><p>E级要接收数据：</p>
-<ul>
-<li>FW_ALUA_out</li>
-<li>FW_ALUB_out</li>
-</ul>
-<p>W级可发射数据：</p>
-<ul>
-<li>PC_W + 32’h8</li>
-<li>ALU_C_W</li>
-</ul>
-<h3 id="D-lt-W"><a href="#D-lt-W" class="headerlink" title="D <- W"></a>D &lt;- W</h3><p>D级要接收数据：</p>
-<ul>
-<li>FW_RD1_out</li>
-<li>FW_RD2_out</li>
-</ul>
-<p>W级可发射数据：</p>
-<ul>
-<li>PC_W + 32’h8</li>
-<li>ALU_C_W</li>
-</ul>
-<h3 id="E-lt-M"><a href="#E-lt-M" class="headerlink" title="E <- M"></a>E &lt;- M</h3><p>E级要接收数据：</p>
-<ul>
-<li>FW_ALUA_out</li>
-<li>FW_ALUB_out</li>
-</ul>
-<p>M级可发射数据：</p>
-<ul>
-<li>PC_M + 32’h8</li>
-<li>ALU_C_M</li>
-</ul>
-<h3 id="D-lt-M"><a href="#D-lt-M" class="headerlink" title="D <- M"></a>D &lt;- M</h3><p>D级要接收数据：</p>
-<ul>
-<li>FW_RD1_out</li>
-<li>FW_RD2_out</li>
-</ul>
-<p>M级可发射数据：</p>
-<ul>
-<li>PC_M + 32’h8</li>
-<li>ALU_C_M</li>
-</ul>
-<h3 id="D-lt-E"><a href="#D-lt-E" class="headerlink" title="D <- E"></a>D &lt;- E</h3><p>D级要接收数据：</p>
-<ul>
-<li>FW_RD1_out</li>
-<li>FW_RD2_out</li>
-</ul>
-<p>E级可发射数据：</p>
-<ul>
-<li>PC_E + 32’h8</li>
-<li>EXT_Result_E</li>
-</ul>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><pre class="line-numbers language-MIPS" data-language="MIPS"><code class="language-MIPS">######## M &lt;- W #########
-# FW_DM_WD_out &lt;- ALU_C_W
-ori $t1, $0, 0x1
-nop
-nop
-nop
-add $t1, $t1, $t1
-sw $t1, 0($0)
-nop
-nop
-nop
-# FW_DM_WD_out &lt;- PC_W + 32'h8
-ori $t1, $0, 0x1
-nop
-nop
-nop
-jal test_m_w
-sw $ra, 0($0)
-ori $t1, $0, 0x2
-j test_m_w_end
-nop
-test_m_w:
-ori $t1, $0, 0x3
-jr $ra
-nop
-nop
-nop
-test_m_w_end:
-nop
-nop
-nop
-######## E &lt;- W #########
-# FW_ALU_out &lt;- ALU_C_W
-ori $t1, $0, 0x1
-nop
-nop
-nop
-add $t2, $t1, $t1
-nop
-add $t3, $t2, $t2
-nop
-nop
-nop
-# FW_ALU_out &lt;- PC_W + 32'h8
-jal test_e_w
-nop
-j test_e_w_end
-nop
-test_e_w:
-add $t4, $ra, $ra
-nop
-nop
-nop
-jr $ra
-nop
-test_e_w_end:
-nop
-nop
-nop
-########## D &lt;- W #########
-# FW_RD12_out &lt;- ALU_C_W
-ori $t1, $0, 0x1111
-nop
-nop
-nop
-ori $t2, $0, 0x2222
-nop
-nop
-nop
-add $t3, $t1, $t1 # W
-nop # M
-nop # E
-beq $t3, $t2, test_d_w_1 # D
-nop
-ori $t1, $0, 0x3333
-test_d_w_1:
-ori $t1, $0, 0x1111
-nop
-nop
-nop
-######
-add $t4, $t1, $t1 # W
-nop # M
-nop # E
-beq $t2, $t4, test_d_w_2 # D
-nop
-ori $t1, $0, 0x5555
-test_d_w_2:
-ori $t1, $0, 0x6666
-nop
-nop
-nop
-# FW_RD12_out &lt;- PC_W + 32'h8
-ori $t5, $0, 0x314c
-nop
-nop
-nop
-jal test_d_w # W
-nop # M
-j test_d_w_end
-nop
-test_d_w:
-nop # E
-beq $ra, $t5, test_d_w_3 # D
-nop
-ori $t1, $0, 0x3333
-test_d_w_3:
-nop
-nop
-nop
-jr $ra
-nop
-test_d_w_end:
-nop
-nop
-nop
-########### E &lt;- M ###########
-# FW_ALU_out &lt;- ALU_C_M
-ori $t1, $0, 0x1
-nop
-nop
-nop
-add $t2, $t1, $t1 # M
-add $t3, $t2, $t2 # E
-nop
-nop
-nop
-# FW_ALU_out &lt;- PC_M + 32'h8
-jal test_e_m # M
-add $t1, $ra, $ra # E
-j test_e_m_end
-nop
-test_e_m:
-nop
-nop
-nop
-jr $ra
-nop
-test_e_m_end:
-nop
-nop
-nop
-########## D &lt;- M ###########
-# FW_RD12_out &lt;- ALU_C_M
-ori $t1, $0, 0x1111
-nop
-nop
-nop
-ori $t2, $0, 0x2222
-nop
-nop
-nop
-ori $t3, $0, 0
-nop
-nop
-nop
-add $t3, $t1, $t1 # M
-nop # E
-beq $t3, $t2, test_d_m_1 # D
-nop
-ori $t1, $0, 0x3333
-test_d_m_1:
-ori $t1, $0, 0x1111
-nop
-nop
-nop
-######
-add $t4, $t1, $t1 # M
-nop # E
-beq $t2, $t4, test_d_m_2 # D
-nop
-ori $t1, $0, 0x5555
-test_d_m_2:
-ori $t1, $0, 0x6666
-nop
-nop
-nop
-# FW_RD12_out &lt;- PC_M + 32'h8
-ori $t5, $0, 0x3268
-nop
-nop
-nop
-jal test_d_m # M
-nop # E
-j test_d_m_end
-nop
-test_d_m:
-beq $ra, $t5, test_d_m_3 # D
-nop
-ori $t1, $0, 0x3333
-test_d_m_3:
-nop
-nop
-nop
-jr $ra
-nop
-test_d_m_end:
-nop
-nop
-nop
-########### D &lt;- E ###########
-# FW_RD12_out &lt;- EXT_Result_E
-lui $t1, 0x9
-nop
-nop
-nop
-lui $t2, 0x9 # E 
-beq $t1, $t2, test_d_e_1
-nop
-ori $t1, $0, 0x3333
-test_d_e_1:
-nop
-nop
-nop
-# FW_RD12_out &lt;- PC_M + 32'h8<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
+</li>
+<li><p>请结合自己的实现分析，你是如何处理 Busy 信号带来的周期阻塞的？</p>
+<p>答： $mult,multu,div,divu$ 指令会让乘除法模块产生有效一个时钟周期的 $start$ 信号和相应的有效 5 或 10 个周期的 $busy$ 信号，当 $HILO_BUSY = start | busy$ 有效时，会让乘除法指令在 $NPC$ 、 $D_REG$ 模块阻塞一个周期，并清空 $E_REG$ 。</p>
+</li>
+<li><p>请问采用字节使能信号的方式处理写指令有什么好处？（提示：从清晰性、统一性等角度考虑）</p>
+<p>答：从清晰性来说，采用字节使能信号能够清晰地显示当前指令要写哪些字节；从统一性来说，字节使能信号将写使能信号和字节控制信号统一起来，使得写宽度不同的指令可以共用该信号。</p>
+</li>
+<li><p>请思考，我们在按字节读和按字节写时，实际从 DM 获得的数据和向 DM 写入的数据是否是一字节？在什么情况下我们按字节读和按字节写的效率会高于按字读和按字写呢？</p>
+<p>答：在按字节读和按字节写时，实际从 DM 获得的数据和向 DM 写入的数据并不是一字节，而是一字。当 DM 的单位容量不为 $32bits$ ，而是 $8bits$ 时，按字节读写的效率高于按字读写。</p>
+</li>
+<li><p>为了对抗复杂性你采取了哪些抽象和规范手段？这些手段在译码和处理数据冲突的时候有什么样的特点与帮助？</p>
+<p>答：将各种控制信号的不同取值用宏来表示，而且这些宏的命名带有其对应的控制信号名。这样能够直观地识别、读写各个控制信号的取值以及含义。</p>
+</li>
+<li><p>在本实验中你遇到了哪些不同指令类型组合产生的冲突？你又是如何解决的？相应的测试样例是什么样的？</p>
+<p>答：和P5一样，不同指令的 $T_{use}$ 与 $ T_{new}$ 不同，产生不同的冲突。利用条件转发来解决。</p>
+</li>
+<li><p>如果你是手动构造的样例，请说明构造策略，说明你的测试程序如何保证<strong>覆盖</strong>了所有需要测试的情况；如果你是<strong>完全随机</strong>生成的测试样例，请思考完全随机的测试程序有何不足之处；如果你在生成测试样例时采用了<strong>特殊的策略</strong>，比如构造连续数据冒险序列，请你描述一下你使用的策略如何<strong>结合了随机性</strong>达到强测的效果。</p>
+<p>答：手动构造样例，根据转发时发送数据和接收数据的流水级寄存器不同，来构造不同类型的测试样例。</p>
+</li>
+</ol>
+<p><img src="/2023/03/22/buaa-co-2022-p6/OneDrive\桌面\image-20221129210349123.png" alt="image-20221129210349123"></p>
+<table>
+<thead>
+<tr>
+<th>格式</th>
+<th>jap target</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>描述</td>
+<td>跳转并将PC推到栈顶</td>
+</tr>
+</tbody></table>
+<p>I : </p>
+<p> vAddr ← GPR[29] </p>
+<p> Memory[vAddr] ← PC + 8 </p>
+<p> GPR[29] ← GPR[29] - 4 </p>
+<p>I + 1 : </p>
+<p> PC ← PC31…28||target||02 </p>
+<p>执行时间为 3 个时钟周期，其他行为与 DIV 指令相同            </p>
+<p>lwmx rs, offset(base)                </p>
+<p>内存值大于寄存器值时写入5号寄存器，否则写入4号寄存器                </p>
+<p>Vaddr ← GPR[base] + sign_extend(offset)</p>
+<p>Condition ← GPR[rt] &lt; Memory[Vaddr] </p>
+<p>If condition:</p>
+<p>GPR[5] ← Memory[Vaddr]</p>
+<p>else:</p>
+<p>GPR[4] ← Memory[Vaddr]</p>
+<table>
+<thead>
+<tr>
+<th>示例</th>
+<th>lwmx $t5, (-100)$t1</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>其他</td>
+<td>地址不是4的倍数时强制对齐。比大小是有符号数</td>
+</tr>
+</tbody></table>
 
                 
             </div>
@@ -1866,7 +1945,7 @@ nop
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://Gnodaij819.github.io/2023/03/21/buaa-co-2022-p5/">https://Gnodaij819.github.io/2023/03/21/buaa-co-2022-p5/</a>
+                    <a href="https://Gnodaij819.github.io/2023/03/22/buaa-co-2022-p6/">https://Gnodaij819.github.io/2023/03/22/buaa-co-2022-p6/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -1953,13 +2032,13 @@ nop
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2023/03/22/buaa-co-2022-p6/">
+                <a href="/2023/03/22/buaa-co-2022-p7/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/%20(17).jpg" class="responsive-img" alt="BUAA_CO_2022_P6">
+                        <img src="/medias/featureimages/%20(16).jpg" class="responsive-img" alt="BUAA_CO_2022_P7">
                         
-                        <span class="card-title">BUAA_CO_2022_P6</span>
+                        <span class="card-title">BUAA_CO_2022_P7</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1974,23 +2053,11 @@ nop
                         </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/CO/" class="post-category">
-                                    CO
-                                </a>
-                            
+                            <i class="fas fa-user fa-fw"></i>
+                            John Doe
                             
                         </span>
                     </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/CO/">
-                        <span class="chip bg-color">CO</span>
-                    </a>
-                    
                 </div>
                 
             </div>
@@ -2002,13 +2069,13 @@ nop
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2023/03/21/buaa-co-2022-p4/">
+                <a href="/2023/03/21/buaa-co-2022-p5/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/%20(19).jpg" class="responsive-img" alt="BUAA_CO_2022_P4">
+                        <img src="/medias/featureimages/%20(11).png" class="responsive-img" alt="BUAA_CO_2022 P5">
                         
-                        <span class="card-title">BUAA_CO_2022_P4</span>
+                        <span class="card-title">BUAA_CO_2022 P5</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
