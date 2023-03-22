@@ -261,10 +261,104 @@
 
 
 
-<main class="container content">
+<main class="post-container content">
 
     
-    <!-- 文章内容详情 -->
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
 <div id="artDetail">
     <div class="card">
         <div class="card-content article-info">
@@ -273,8 +367,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/CO/">
-                                <span class="chip bg-color">CO</span>
+                            <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90/">
+                                <span class="chip bg-color">计算机组成</span>
                             </a>
                         
                     </div>
@@ -285,8 +379,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/CO/" class="post-category">
-                                CO
+                            <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90/" class="post-category">
+                                计算机组成
                             </a>
                         
                     </div>
@@ -302,7 +396,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    3.7k
+                    3.3k
                 </div>
                 
 
@@ -842,70 +936,13 @@ java -jar ‪D:\study\CO\P7\Mars_p7\Mars.jar a db mc CompactDataAtZero dump 0x00
 <li><p><code>E:\source.txt</code> 是源文件路径</p>
 </li>
 </ul>
-<h2 id="课上（12-6）"><a href="#课上（12-6）" class="headerlink" title="课上（12.6）"></a>课上（12.6）</h2><p> 测试点 5076  WRONG ANSWER </p>
-<p>3d90 : mfc0 $28, $14</p>
-<pre class="line-numbers language-none"><code class="language-none">Wrong instruction behaviour. We got '@00003d90: $ 28 &lt;= 0000000d' when we expected '@00003d90: $ 28 &lt;= 00004a10'. *<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p> 测试点 5074  WRONG ANSWER </p>
-<p>6b4c : mfc0 $31, $14</p>
-<pre class="line-numbers language-none"><code class="language-none">Wrong instruction behaviour. We got '@00006b4c: $ 31 &lt;= ffff945d' when we expected '@00006b4c: $ 31 &lt;= 000033ec'. *<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p> 测试点 5073  WRONG ANSWER </p>
-<p>3700 : mfc0 $1, $14</p>
-<pre class="line-numbers language-none"><code class="language-none">Wrong instruction behaviour. We got '@00003700: $ 1 &lt;= cb740000' when we expected '@00003700: $ 1 &lt;= 00005598'. *<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p> 测试点 5072  WRONG ANSWER </p>
-<p>4534 : mfc0 $7, $14</p>
-<pre class="line-numbers language-none"><code class="language-none">Wrong instruction behaviour. We got '@00004534: $ 7 &lt;= c4520000' when we expected '@00004534: $ 7 &lt;= 000031c4'. *<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>T</p>
-<p> 测试点 5076  WRONG ANSWER </p>
-<pre class="line-numbers language-none"><code class="language-none">Wrong instruction behaviour. We got '@00004184: $ 23 &lt;= ffffe4f3' when we expected '@00003d94: $ 29 &lt;= ffffe4f3'. *<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p> 测试点 5074  WRONG ANSWER </p>
-<pre class="line-numbers language-none"><code class="language-none">Wrong instruction behaviour. We got '@00006b54: $ 3 &lt;= ffff86b1' when we expected '@00006b54: $ 3 &lt;= 00002640'. *<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p> 测试点 5073  WRONG ANSWER </p>
-<pre class="line-numbers language-none"><code class="language-none">Wrong instruction behaviour. We got '@00003700: $ 1 &lt;= cb740000' when we expected '@00003700: $ 1 &lt;= 00005598'. *<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p> 测试点 5072  WRONG ANSWER </p>
-<pre class="line-numbers language-none"><code class="language-none">Wrong instruction behaviour. We got '@0000456c: $ 10 &lt;= c4520000' when we expected '@0000456c: $ 10 &lt;= 000031c4'. *<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>T2</p>
-<p> 测试点 5079  WRONG ANSWER </p>
-<pre class="line-numbers language-none"><code class="language-none">Wrong instruction behaviour. We got '@0000323c: * 00000060 &lt;= aabb0001' when we expected '@0000323c: * 00000060 &lt;= aabbb2b4'. *<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p> 测试点 5078  WRONG ANSWER </p>
-<pre class="line-numbers language-none"><code class="language-none">Wrong instruction behaviour. We got '@000042f8: * 00000094 &lt;= aabb00dd' when we expected '@000042f8: * 00000094 &lt;= aabb38dd'. *<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p> 测试点 5077  WRONG ANSWER </p>
-<pre class="line-numbers language-none"><code class="language-none">Wrong instruction behaviour. We got '@00003650: * 00000080 &lt;= eebbccdd' when we expected '@00003650: * 00000080 &lt;= d0bbccdd'. *<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p> 测试点 5076  WRONG ANSWER </p>
-<pre class="line-numbers language-none"><code class="language-none">Wrong instruction behaviour. We got '@00003d90: $ 28 &lt;= 0000000d' when we expected '@00003d90: $ 28 &lt;= 00004a10'. *<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p> 测试点 5075  ACCEPTED </p>
-<pre class="line-numbers language-none"><code class="language-none">Accepted. <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p> 测试点 5074  WRONG ANSWER </p>
-<pre class="line-numbers language-none"><code class="language-none">Wrong instruction behaviour. We got '@00003244: * 00000094 &lt;= aabbe8dd' when we expected '@00003244: * 00000094 &lt;= aabb50dd'. *<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p> 测试点 5073  WRONG ANSWER </p>
-<pre class="line-numbers language-none"><code class="language-none">Wrong instruction behaviour. We got '@00003700: $ 1 &lt;= cb740000' when we expected '@00003700: $ 1 &lt;= 00005598'. *<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p> 测试点 5072  WRONG ANSWER </p>
-<pre class="line-numbers language-none"><code class="language-none">Wrong instruction behaviour. We got '@000033cc: $ 30 &lt;= 00007189' when we expected '@000033cc: $ 30 &lt;= 00004b5c'. *<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>CP0 的输入数据应当是转发后的数据，而不是流水来的 $GPR[rt]$ 。</p>
-<h2 id="课下报错信息"><a href="#课下报错信息" class="headerlink" title="课下报错信息"></a>课下报错信息</h2><h3 id="弱测"><a href="#弱测" class="headerlink" title="弱测"></a>弱测</h3><p><img src="/2023/03/22/buaa-co-2022-p7/Users\28568\AppData\Roaming\Typora\typora-user-images\image-20221204162615590.png" alt="image-20221204162615590"></p>
-<h3 id="中测"><a href="#中测" class="headerlink" title="中测"></a>中测</h3><p><img src="/2023/03/22/buaa-co-2022-p7/Users\28568\AppData\Roaming\Typora\typora-user-images\image-20221204224843822.png" alt="image-20221204224843822"></p>
-<p><img src="/2023/03/22/buaa-co-2022-p7/Users\28568\AppData\Roaming\Typora\typora-user-images\image-20221204224904295.png" alt="image-20221204224904295"></p>
-<p><img src="/2023/03/22/buaa-co-2022-p7/Users\28568\AppData\Roaming\Typora\typora-user-images\image-20221205012827126.png" alt="image-20221205012827126"></p>
-<p>乘除模块忘记添加 Req 输入端口了。</p>
-<p><img src="/2023/03/22/buaa-co-2022-p7/Users\28568\AppData\Roaming\Typora\typora-user-images\image-20221205020323134.png" alt="image-20221205020323134"></p>
-<p>忘记添加 syscall 的异常判断了</p>
-<p>好像是更改了Stall就莫名其妙对了（？）</p>
-<p>CPO_RD 的转发</p>
+<h2 id="课上（12-6）"><a href="#课上（12-6）" class="headerlink" title="课上（12.6）"></a>课上（12.6）</h2><p> CP0 的输入数据应当是转发后的数据，而不是流水来的 $GPR[rt]$ 。</p>
+<h2 id="课下-BUG"><a href="#课下-BUG" class="headerlink" title="课下 BUG"></a>课下 BUG</h2><h3 id="中测"><a href="#中测" class="headerlink" title="中测"></a>中测</h3><ol>
+<li>乘除模块忘记添加 Req 输入端口了；</li>
+<li>忘记添加 syscall 的异常判断了；</li>
+<li>好像是更改了Stall就莫名其妙对了（？）</li>
+</ol>
+<p>CP0_RD 的转发</p>
 <p>PC值向4180的跳转</p>
 
                 
@@ -921,8 +958,8 @@ java -jar ‪D:\study\CO\P7\Mars_p7\Mars.jar a db mc CompactDataAtZero dump 0x00
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/CO/">
-                                    <span class="chip bg-color">CO</span>
+                                <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90/">
+                                    <span class="chip bg-color">计算机组成</span>
                                 </a>
                             
                         </div>
@@ -966,18 +1003,17 @@ java -jar ‪D:\study\CO\P7\Mars_p7\Mars.jar a db mc CompactDataAtZero dump 0x00
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2023/03/22/buaa-co-2022-p7/">
+                <a href="/2023/03/22/buaa-oo-2023-unit1/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/%20(16).jpg" class="responsive-img" alt="BUAA_CO_2022_P7">
+                        <img src="/medias/featureimages/%20(11).png" class="responsive-img" alt="BUAA_OO_2023_Unit1">
                         
-                        <span class="card-title">BUAA_CO_2022_P7</span>
+                        <span class="card-title">BUAA_OO_2023_Unit1</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -987,27 +1023,34 @@ java -jar ‪D:\study\CO\P7\Mars_p7\Mars.jar a db mc CompactDataAtZero dump 0x00
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-03-22
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2023-03-22
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/CO/" class="post-category">
-                                    CO
+                            <a href="/categories/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%9E%84%E9%80%A0/" class="post-category">
+                                    面向对象设计与构造
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/CO/">
-                        <span class="chip bg-color">CO</span>
+                    <a href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">
+                        <span class="chip bg-color">面向对象</span>
+                    </a>
+                    
+                    <a href="/tags/JAVA/">
+                        <span class="chip bg-color">JAVA</span>
+                    </a>
+                    
+                    <a href="/tags/%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D/">
+                        <span class="chip bg-color">递归下降</span>
                     </a>
                     
                 </div>
@@ -1044,8 +1087,8 @@ java -jar ‪D:\study\CO\P7\Mars_p7\Mars.jar a db mc CompactDataAtZero dump 0x00
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/CO/" class="post-category">
-                                    CO
+                            <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90/" class="post-category">
+                                    计算机组成
                                 </a>
                             
                             
@@ -1055,8 +1098,8 @@ java -jar ‪D:\study\CO\P7\Mars_p7\Mars.jar a db mc CompactDataAtZero dump 0x00
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/CO/">
-                        <span class="chip bg-color">CO</span>
+                    <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90/">
+                        <span class="chip bg-color">计算机组成</span>
                     </a>
                     
                 </div>
@@ -1124,6 +1167,100 @@ java -jar ‪D:\study\CO\P7\Mars_p7\Mars.jar a db mc CompactDataAtZero dump 0x00
 <script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
 
 
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('1'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
     
 
 </main>
@@ -1132,7 +1269,7 @@ java -jar ‪D:\study\CO\P7\Mars_p7\Mars.jar a db mc CompactDataAtZero dump 0x00
 <script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 <script>
     MathJax.Hub.Config({
-        tex2jax: {inlineMath: [['$', '$'], ['\(', '\)']]}
+        tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}
     });
 </script>
 
