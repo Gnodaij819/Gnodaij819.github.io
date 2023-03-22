@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="BUAA_OO_2023_Unit1, Gnodaij&#39;s Blog">
+    <meta name="keywords" content="BUAA_OS_2023_Lab0, Gnodaij&#39;s Blog">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>BUAA_OO_2023_Unit1 | Gnodaij&#39;s Blog</title>
+    <title>BUAA_OS_2023_Lab0 | Gnodaij&#39;s Blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -246,12 +246,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/%20(11).png')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/%20(7).png')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">BUAA_OO_2023_Unit1</h1>
+                    <h1 class="description center-align post-title">BUAA_OS_2023_Lab0</h1>
                 </div>
             </div>
         </div>
@@ -367,16 +367,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">
-                                <span class="chip bg-color">面向对象</span>
-                            </a>
-                        
-                            <a href="/tags/JAVA/">
-                                <span class="chip bg-color">JAVA</span>
-                            </a>
-                        
-                            <a href="/tags/%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D/">
-                                <span class="chip bg-color">递归下降</span>
+                            <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
+                                <span class="chip bg-color">操作系统</span>
                             </a>
                         
                     </div>
@@ -387,8 +379,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%9E%84%E9%80%A0/" class="post-category">
-                                面向对象设计与构造
+                            <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" class="post-category">
+                                操作系统
                             </a>
                         
                     </div>
@@ -404,7 +396,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    3.1k
+                    2.1k
                 </div>
                 
 
@@ -424,142 +416,185 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="BUAA-OO-Unit1-表达式解析-总结"><a href="#BUAA-OO-Unit1-表达式解析-总结" class="headerlink" title="BUAA OO Unit1 表达式解析 总结"></a>BUAA OO Unit1 表达式解析 总结</h1><hr>
-<h2 id="第一次作业"><a href="#第一次作业" class="headerlink" title="第一次作业"></a>第一次作业</h2><h3 id="训练目标"><a href="#训练目标" class="headerlink" title="训练目标"></a>训练目标</h3><p>通过对表达式结构进行建模，完成<strong>多变量多项式的括号展开</strong>，初步体会层次化设计的思想。</p>
-<h3 id="架构设计"><a href="#架构设计" class="headerlink" title="架构设计"></a>架构设计</h3><h4 id="表达式解析"><a href="#表达式解析" class="headerlink" title="表达式解析"></a>表达式解析</h4><p>在上学期的<a target="_blank" rel="noopener" href="http://oo.buaa.edu.cn/assignment/393/intro">先导课第七次作业</a>中，已经学习并使用过<strong>递归下降法</strong>进行语法解析。通过<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/JgyGLhOmuOJbIIn12ZM78A">OO经验贴第三弹</a>复习后，便能较为轻松地采用递归下降法对本次作业的表达式进行解析。第一次作业的文法如下：</p>
+                <h1 id="Lab0-实验报告"><a href="#Lab0-实验报告" class="headerlink" title="Lab0 实验报告"></a>Lab0 实验报告</h1><h2 id="思考题"><a href="#思考题" class="headerlink" title="思考题"></a>思考题</h2><h3 id="Thinking-0-1"><a href="#Thinking-0-1" class="headerlink" title="Thinking 0.1"></a>Thinking 0.1</h3><p>在前述已初始化的 <code>~/learnGit</code> 目录下，创建一个名为 <code>README.txt</code> 的文件，执行命令 <code>git status &gt; Untracked.txt</code> 后，<code>Untracked.txt</code> 文件的内容为：</p>
+<pre class="line-numbers language-none"><code class="language-none">位于分支 master
+
+尚无提交
+
+未跟踪的文件:
+  （使用 "git add &lt;文件&gt;..." 以包含要提交的内容）
+        README.txt
+        Untracked.txt
+
+提交为空，但是存在尚未跟踪的文件（使用 "git add" 建立跟踪）<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>在 <code>README.txt</code> 文件中添加一行内容 <code>HELLO WORLD!</code> ，然后执行 <code> git add README.txt</code>  命令，再执行命令 <code>git status &gt; Stage.txt</code> ， <code>Stage.txt</code> 文件的内容为：</p>
+<pre class="line-numbers language-none"><code class="language-none">位于分支 master
+
+尚无提交
+
+要提交的变更：
+  （使用 "git rm --cached &lt;文件&gt;..." 以取消暂存）
+        新文件：   README.txt
+
+未跟踪的文件:
+  （使用 "git add &lt;文件&gt;..." 以包含要提交的内容）
+        Stage.txt
+        Untracked.txt<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>发现经过 <code>add</code> 命令， <code>README.txt</code> 文件从“未跟踪的文件”移至了“要提交的变更”，即由 Untracked 变为 Staged 。</p>
+<p>执行命令 <code>git commit -m "21373311 README.txt"</code> ，发现 <code>README.txt</code> 文件已从 Staged 区移除。</p>
+<p>在 <code>README.txt</code> 文件后添加一行内容 <code>HELLO OS!</code> ，再执行命令 <code>git status &gt; Modified.txt</code> ， <code>Modified.txt</code> 文件的内容为：</p>
+<pre class="line-numbers language-none"><code class="language-none">位于分支 master
+尚未暂存以备提交的变更：
+  （使用 "git add &lt;文件&gt;..." 更新要提交的内容）
+  （使用 "git restore &lt;文件&gt;..." 丢弃工作区的改动）
+        修改：     README.txt
+
+未跟踪的文件:
+  （使用 "git add &lt;文件&gt;..." 以包含要提交的内容）
+        Modified.txt
+        Stage.txt
+        Untracked.txt
+
+修改尚未加入提交（使用 "git add" 和/或 "git commit -a"）<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>和第一次执行 <code>add</code> 命令之前的 status 相比， <code>README.txt</code> 文件的位置不再是“未跟踪的文件”，而是“尚未暂存以备提交的变更“。原因是经过 <code>add</code> 命令后， <code>README.txt</code> 已被添加至 Git 的暂存区， Git 会跟踪该文件的变化，所以之后该文件若又被修改，则会出现在已修改部分而不是未跟踪部分。</p>
+<h3 id="Thinking-0-2"><a href="#Thinking-0-2" class="headerlink" title="Thinking 0.2"></a>Thinking 0.2</h3><p>仔细看看0.10，思考一下箭头中的 <code>add the file</code> 、<code>stage the file</code> 和<br><code>commit</code> 分别对应的是 Git 里的哪些命令呢？</p>
+<p><img src="/2023/03/22/buaa-os-2023-lab0/study\OS\实验报告\lab0\图0.10.png" alt="图0.10"></p>
 <ul>
-<li>表达式 →→ 空白项 [加减 空白项] 项 空白项 | 表达式 加减 空白项 项 空白项</li>
-<li>项 →→ [加减 空白项] 因子 | 项 空白项 ‘*’ 空白项 因子</li>
-<li>因子 →→ 变量因子 | 常数因子 | 表达式因子</li>
-<li>变量因子 →→ 幂函数</li>
-<li>常数因子 →→ 带符号的整数</li>
-<li>表达式因子 →→ ‘(‘ 表达式 ‘)’ [空白项 指数]</li>
-<li>幂函数 →→ (‘x’ | ‘y’ | ‘z’) [空白项 指数]</li>
-<li>指数 →→  ‘**‘ 空白项 [‘+’] 允许前导零的整数  <strong>(注：指数一定不是负数)</strong></li>
-<li>带符号的整数 →→ [加减] 允许前导零的整数</li>
-<li>允许前导零的整数 →→ (‘0’|’1’|’2’|…|’9’){‘0’|’1’|’2’|…|’9’}</li>
-<li>空白项 →→ {空白字符}</li>
-<li>空白字符 →→ (空格) | ‘\t’</li>
-<li>加减 →→ ‘+’ | ‘-‘</li>
+<li>add the file: 对应 <code>git add [filename]</code> 命令</li>
+<li>stage the file: 对应 <code>git add [filename]</code> 命令</li>
+<li>commit: 对应 <code>git commit</code> 命令</li>
 </ul>
-<p>根据文法，我们输入的是一个<strong>表达式</strong>，这个<strong>表达式</strong>由若干个<strong>项</strong>通过 ‘+’ 或 ‘-’ 连接而成，而每个<strong>项</strong>由若干个<strong>因子</strong>通过 ‘*’ 连接而成。</p>
-<p>因此，我们建立一个 Expr 类来储存<strong>表达式</strong>，其含有一个属性是项的列表 <code>ArrayList&lt;Term&gt; terms</code> ；建立一个 Term 类来储存<strong>项</strong>，其含有一个属性是因子的列表 <code>ArrayList&lt;Factor&gt; factors</code> 。接着，我们来考虑<strong>因子</strong>，这里的<strong>因子</strong>可能是：</p>
-<ol>
-<li>变量因子</li>
-<li>常数因子</li>
-<li>表达式因子</li>
-</ol>
-<p>在思考如何处理因子之前，需要思考另一个问题：<strong>如何处理符号？</strong>根据文法，表达式前可以有一个符号来表示第一个项的正负，项前可以有一个符号来表示第一个因子的正负，而常数因子，即带符号的整数可能自带一个符号。也就是说，输入的表达式中可能会有最多3个符号连续出现的情况。这时，我采用的处理符号的方法是：<strong>把所有连续出现的正负号都化为单个正负号，且该正负号代表其后因子的符号</strong>。也就是说，<strong>表达式和项都是没有正负的，只有因子有正负之分</strong>。</p>
-<p>想清楚这个问题，就能接着处理<strong>因子</strong>了，我们建立一个 Factor 类来储存所有的因子，根据我们对正负号的处理方式，所有的因子都自带一个正负号，那么 Factor 类就有一个属性是表示正负的 <code>boolean isPos</code> 。在此基础上，我们为每个因子建一个类来进行存储，它们都继承自 Factor 类：</p>
-<ol>
-<li>变量因子： Var 类， 其含有一个属性是变量名 <code>String var</code> (仅可能是x/y/z)</li>
-<li>常数因子： Number 类，其含有一个属性是数值 <code>BigInteger num</code> </li>
-<li>表达式因子： Expr 类(已经建立)</li>
-</ol>
-<p>接着，我们再考虑<strong>指数</strong>的问题。根据文法，变量因子和表达式因子后可能会有指数部分，那么我们就为此前建立的 Var 类和 Expr 类都添加一个属性 <code>int pow</code> 表示其指数。</p>
-<p>至此，我们已经将解析表达式所需要的结构类都建立完毕，下面就可以利用<strong>递归下降法</strong>对表达式进行解析了。</p>
-<p>使用递归下降法解析表达式，除了建立类来存储和结构化之外，还需要编写**词法解析器(Lexer)<strong>和</strong>语法解析器(Parser)**。</p>
-<p>词法解析器基本可以直接使用<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/JgyGLhOmuOJbIIn12ZM78A">OO经验贴第三弹</a>中的词法解析器，只需修改需要识别的合法字符即可。</p>
-<p>语法解析器中，需要对我们之间建立的每个结构类编写一个解析的方法，在第一次作业中需要编写的是：</p>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token class-name">Expr</span> <span class="token function">parseExpr</span><span class="token punctuation">(</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token comment">// TODO</span>
-    <span class="token keyword">return</span> expr<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-
-<span class="token keyword">public</span> <span class="token class-name">Term</span> <span class="token function">parseTerm</span><span class="token punctuation">(</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token comment">// TODO</span>
-    <span class="token keyword">return</span> term<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-
-<span class="token keyword">public</span> <span class="token class-name">Factor</span> <span class="token function">parseFactor</span><span class="token punctuation">(</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token comment">// TODO </span>
-        <span class="token keyword">return</span> expr<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token comment">// TODO </span>
-        <span class="token keyword">return</span> <span class="token keyword">var</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
-        <span class="token comment">// TODO </span>
-        <span class="token keyword">return</span> number<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<p>编写完 Lexer 和 Parser 后，便可对输入的表达式进行解析，实现表达式的层次化和结构化存储。</p>
-<h4 id="表达式的化简"><a href="#表达式的化简" class="headerlink" title="表达式的化简"></a>表达式的化简</h4><h5 id="去括号"><a href="#去括号" class="headerlink" title="去括号"></a>去括号</h5><p>完成表达式的解析后，我们再回顾第一次作业的训练目标：完成多变量多项式的括号展开。这里，括号指的就是表达式因子的括号，所以我把“括号展开”理解为<strong>将表达式因子转化为变量因子和常数因子</strong>。如此看来，括号展开应当是 Term 的方法，即需要将每个 Term 中含有的所有 Factor instanceof Expr 转化为 Var 和 Number 。那么如何进行这样的转化呢？一个括号(表达式因子)被展开，利用的原理是<strong>乘法分配律</strong>，也就是说我们需要让这个表达式因子中的<strong>每一个项</strong>和<strong>这个表达式因子所属的项的其余所有因子</strong>合并为一个<strong>新的项</strong>，这些<strong>新的项共同构成的新的表达式</strong>即为将该括号展开后的表达式。在我的代码中，我将去括号分为了降幂和乘开两个步骤，即先将需要展开的表达式因子的幂次降为1，再将每个幂次为1的表达式因子展开。</p>
-<h5 id="合并同类项"><a href="#合并同类项" class="headerlink" title="合并同类项"></a>合并同类项</h5><p>在中强测中，性能分(唯一评判依据是<strong>输出结果的有效长度</strong>)占比20%。为了将输出的表达式尽可能缩短，我们需要进行合并同类项。</p>
-<p>为了便于合并，我们将每个项都化简为以下形式：<br>$$<br>m x^a y^b z^c<br>$$<br>然后比较每个项的 a,b,c 值是否均相同，若相同，即可将项的系数进行合并。</p>
-<h3 id="度量分析"><a href="#度量分析" class="headerlink" title="度量分析"></a>度量分析</h3><h4 id="类图"><a href="#类图" class="headerlink" title="类图"></a>类图</h4><img src="/2023/03/22/buaa-oo-2023-unit1/hw1_p.png" class="" title="hw1类图">
-
-<h4 id="代码量"><a href="#代码量" class="headerlink" title="代码量"></a>代码量</h4><img src="/2023/03/22/buaa-oo-2023-unit1/oo_unit1_hw1_statistic.png" class="" title="hw1代码量">
-
-<h4 id="类复杂度"><a href="#类复杂度" class="headerlink" title="类复杂度"></a>类复杂度</h4><img src="/2023/03/22/buaa-oo-2023-unit1/oo_unit1_hw1_classMetrics.png" class="" title="hw1类复杂度">
-
-<h4 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h4><p>在 Term 类中，实现了降幂、去括号、将项转化为标准项等方法，导致该类复杂度较高。</p>
-<h3 id="Bug"><a href="#Bug" class="headerlink" title="Bug"></a>Bug</h3><h4 id="自己代码中的-bug"><a href="#自己代码中的-bug" class="headerlink" title="自己代码中的 bug"></a>自己代码中的 bug</h4><p>在处理 0 次幂时，我将指数为 0 的表达式因子或变量因子都直接解析为常数变量 1 ，但由于我对符号的处理中，将所有出现的正负号都归属于其后的因子，导致一个指数为 0 的负因子被解析为 ‘+1’ 而不是 ‘-1’ 。</p>
-<h4 id="同房其他人代码中的-bug"><a href="#同房其他人代码中的-bug" class="headerlink" title="同房其他人代码中的 bug"></a>同房其他人代码中的 bug</h4><ol>
-<li>对 0 次幂结果为 1 的处理出现错误；</li>
-<li>符号处理不正确，出现丢掉负号的情况。</li>
-</ol>
-<h2 id="第二次作业"><a href="#第二次作业" class="headerlink" title="第二次作业"></a>第二次作业</h2><h3 id="训练目标-1"><a href="#训练目标-1" class="headerlink" title="训练目标"></a>训练目标</h3><p>新增<strong>三角函数</strong>、<strong>自定义函数调用</strong>。支持<strong>括号的嵌套</strong>。</p>
-<h3 id="架构设计-1"><a href="#架构设计-1" class="headerlink" title="架构设计"></a>架构设计</h3><h4 id="三角函数"><a href="#三角函数" class="headerlink" title="三角函数"></a>三角函数</h4><p>新建 Trig 类来储存三角函数因子，其属性有因子 <code>Factor factor</code> 和指数 <code>Integer pow</code> 。这里的因子仍有可能是任何种类的因子。</p>
-<h4 id="自定义函数"><a href="#自定义函数" class="headerlink" title="自定义函数"></a>自定义函数</h4><p>在第二次作业中，新增了自定义函数的定义及其调用。在本次作业中，我采用<strong>字符串替换</strong>的方式进行函数调用<del>(在第三次作业中被迫重构)</del>，根据根据括号层数和逗号划分实参并进行字符串的替换。</p>
-<p>首先，建立 Definition 类来储存函数的定义，其属性有函数参数 <code>String parameter</code> (参数字符串中变量名的数量和顺序表明了参数的数目与前后顺序)和函数体 <code>String body</code> 。</p>
-<p>在储存了输入的自定义函数后，我在输入预处理的过程中对输入的表达式字符串进行处理，即对所有函数名(f/g/h)后的括号(括号范围可以通过栈来进行确定)内的内容用逗号进行分割，从而形成一个储存实参的字符串的列表，根据函数名找到对应函数的定义，然后将定义式中的形参转化为之前得到的实参即可。</p>
-<h3 id="度量分析-1"><a href="#度量分析-1" class="headerlink" title="度量分析"></a>度量分析</h3><h4 id="类图-1"><a href="#类图-1" class="headerlink" title="类图"></a>类图</h4><img src="/2023/03/22/buaa-oo-2023-unit1/hw2_p.png" class="" title="hw2类图">
-
-<h4 id="代码量-1"><a href="#代码量-1" class="headerlink" title="代码量"></a>代码量</h4><img src="/2023/03/22/buaa-oo-2023-unit1/oo_unit1_hw2_statistic.png" class="" title="hw2代码量">
-
-<h4 id="类复杂度-1"><a href="#类复杂度-1" class="headerlink" title="类复杂度"></a>类复杂度</h4><img src="/2023/03/22/buaa-oo-2023-unit1/oo_unit1_hw2_classMetrics.png" class="" title="hw2类复杂度">
-
-<h4 id="分析-1"><a href="#分析-1" class="headerlink" title="分析"></a>分析</h4><ol>
-<li>除了在 hw1 中出现的 Term 类的问题之外，新增的 Trig 类也单独实现了降幂、去括号等方法，复杂度也较高；</li>
-<li>由于在第二次作业中并未对含三角函数的项进行合并同类项处理，在 Expr 类中的合并同类项方法下新增了对含三角函数项的单独处理，导致 Expr 类的复杂度升高。</li>
-</ol>
-<h3 id="Bug-1"><a href="#Bug-1" class="headerlink" title="Bug"></a>Bug</h3><p>本次代码在强测和互测中没有出现 bug 。</p>
-<h4 id="同房其他人代码中的bug"><a href="#同房其他人代码中的bug" class="headerlink" title="同房其他人代码中的bug"></a>同房其他人代码中的bug</h4><p>丢掉了 -cos(0) 和 -sin(0) 的负号。</p>
-<h2 id="第三次作业"><a href="#第三次作业" class="headerlink" title="第三次作业"></a>第三次作业</h2><h3 id="训练目标-2"><a href="#训练目标-2" class="headerlink" title="训练目标"></a>训练目标</h3><p>新增<strong>求导因子</strong>。支持函数的嵌套调用。</p>
-<h3 id="架构设计-2"><a href="#架构设计-2" class="headerlink" title="架构设计"></a>架构设计</h3><h4 id="处理求导算子"><a href="#处理求导算子" class="headerlink" title="处理求导算子"></a>处理求导算子</h4><p>新增的求导因子的文法如下：</p>
+<h3 id="Thinking-0-3"><a href="#Thinking-0-3" class="headerlink" title="Thinking 0.3"></a>Thinking 0.3</h3><ol>
+<li><p>代码文件 print.c 被错误删除时，应当使用什么命令将其恢复？</p>
 <ul>
-<li>求导因子 →→ 求导算子 空白项 ‘(‘ 空白项 表达式 空白项 ‘)’</li>
-<li>求导算子 →→ ‘dx’ ｜’dy’ ｜’dz’</li>
+<li><code>git checkout -- print.c</code></li>
 </ul>
-<p>为了进行求导计算，我采用了第二次课上实验所提供的思路，<strong>为每个需要求导的结构类编写一个求导方法</strong>。据此，我在 Parser 中解析求导因子时，直接返回<strong>调用求导因子内表达式的求导方法所返回的表达式</strong>，便可在解析完成的同时完成求导计算。</p>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token class-name">Expr</span> <span class="token function">parseDerivative</span><span class="token punctuation">(</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token comment">// TODO</span>
-    <span class="token class-name">Expr</span> expr <span class="token operator">=</span> <span class="token class-name">Simplify</span><span class="token punctuation">.</span><span class="token function">deriveExpr</span><span class="token punctuation">(</span>defs<span class="token punctuation">,</span> <span class="token function">parseExpr</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> varName<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token comment">// TODO</span>
-    <span class="token keyword">return</span> expr<span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h4 id="表达式化简"><a href="#表达式化简" class="headerlink" title="表达式化简"></a>表达式化简</h4><p>在第三次作业中，我将所有的化简方法(降幂、去括号、函数调用、求导、合并同类项)都从它们各自的结构类中分离出来，并统一写为 Simplify 类的静态方法，可以通过类名直接调用这些方法。</p>
-<p>另外，我在第二次作业的基础上添加了简单的三角函数化简，即支持合并两个<strong>含三角函数因子数为 1 且三角函数内部因子为幂函数</strong>的项。</p>
-<h3 id="度量分析-2"><a href="#度量分析-2" class="headerlink" title="度量分析"></a>度量分析</h3><h4 id="类图-2"><a href="#类图-2" class="headerlink" title="类图"></a>类图</h4><img src="/2023/03/22/buaa-oo-2023-unit1/hw3_p.png" class="" title="hw3类图">
-
-<h4 id="代码量-2"><a href="#代码量-2" class="headerlink" title="代码量"></a>代码量</h4><img src="/2023/03/22/buaa-oo-2023-unit1/oo_unit1_hw3_statistic.png" class="" title="hw3代码量">
-
-<h4 id="类复杂度-2"><a href="#类复杂度-2" class="headerlink" title="类复杂度"></a>类复杂度</h4><img src="/2023/03/22/buaa-oo-2023-unit1/oo_unit1_hw3_classMetrics.png" class="" title="hw3类复杂度">
-
-<h4 id="分析-2"><a href="#分析-2" class="headerlink" title="分析"></a>分析</h4><ol>
-<li>结合前两次代码中 Expr 类和 Term 类的复杂度较高的问题，我在第三次作业中将所有的化简方法(降幂、去括号、函数调用、求导、合并同类项)都从各自的结构类中分离出来，并统一写入 Simplify 类中。所以发现 Expr 类和 Term 类的复杂度降低，而 Simplify 类的复杂度很高。</li>
-<li>Simplify 类中实现函数调用的方法实际上是调用了 Definition 类中将形参转化为实参操作的方法。而该方法复杂度较高，所以 Definition 类的复杂度较高。</li>
+</li>
+<li><p>代码文件 print.c 被错误删除后，执行了 git rm print.c 命令，此时应当<br>使用什么命令将其恢复？</p>
+<ul>
+<li><code>git reset HEAD print.c</code></li>
+<li><code>git checkout -- print.c</code></li>
+</ul>
+</li>
+<li><p>无关文件 hello.txt 已经被添加到暂存区时，如何在不删除此文件的前提下<br>将其移出暂存区？</p>
+<ul>
+<li><code>git rm --cached hello.txt</code></li>
+</ul>
+</li>
 </ol>
-<h3 id="Bug-2"><a href="#Bug-2" class="headerlink" title="Bug"></a>Bug</h3><h4 id="自己代码中的-bug-1"><a href="#自己代码中的-bug-1" class="headerlink" title="自己代码中的 bug"></a>自己代码中的 bug</h4><ol>
-<li>在解析求导算子时，方法 <code>parseDerivative</code> 的返回值类型为 <code>EXpr</code> ，而我返回的是将求导算子内的表达式求导后得到的表达式，这时忽略了该求导算子自带的正负号。</li>
-<li>在对幂次大于 1 的三角函数进行求导时，没有正确使用链式法则。</li>
-</ol>
-<h4 id="同房其他人代码中的-bug-1"><a href="#同房其他人代码中的-bug-1" class="headerlink" title="同房其他人代码中的 bug"></a>同房其他人代码中的 bug</h4><p>在第三次作业的互测中，我依赖<a target="_blank" rel="noopener" href="https://gitee.com/lu-yuheng/buaa_oo_unit1_xgen">鹿佬搭建的评测机</a><span class="github-emoji"><span>😍</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f60d.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span>找到了房友的较多处bug。</p>
+<h3 id="Thinking-0-4"><a href="#Thinking-0-4" class="headerlink" title="Thinking 0.4"></a>Thinking 0.4</h3><p>找到在 <code>/home/21xxxxxx/learnGit</code> 下刚刚创建的 <code>README.txt</code> 文件，在文件里加入 Testing 1，git add，git commit，提交说明记为 1 。</p>
+<p>模仿上述做法，把 1 分别改为 2 和 3，再提交两次。</p>
+<p>进行版本回退。执行命令 <code>git reset --hard HEAD^</code> 后，再执行 <code>git log</code> ，观<br>察其变化，发现<strong>哈希值为 3 的提交已经消失</strong>。</p>
+<p>找到提交说明为 1 的哈希值，执行命令 <code>git reset --hard &lt;hash&gt;</code> 后，再执<br>行 <code>git log</code> ，观察其变化，发现 <strong>3 次提交均已消失</strong>。</p>
+<p>现在已经回到了旧版本，为了再次回到新版本，执行 <code>git reset --hard &lt;hash&gt;</code> ，再执行 <code>git log</code> ，观察其变化，发现 <strong>3 次提交再次出现</strong>。</p>
+<h3 id="Thinking-0-5"><a href="#Thinking-0-5" class="headerlink" title="Thinking 0.5"></a>Thinking 0.5</h3><p>执行如下命令, 并查看结果</p>
 <ol>
-<li>对三角函数平方和求导时出现错误，问题应该出在优化的过程中；</li>
-<li>解析自定义函数的定义式时出现标准异常；</li>
-<li>表达式因子内只有一个常数因子且为负时，对该表达式因子的幂运算出现符号错误；</li>
-<li>函数调用实参为求导因子，而求导算子后的因子又为函数调用时出现标准异常。</li>
+<li><p>echo first</p>
+<p>输出 first</p>
+</li>
+<li><p>echo second &gt; output.txt</p>
+<p>将文件 <code>output.txt</code> 内容改写为:</p>
+<pre class="line-numbers language-none"><code class="language-none">second<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+<li><p>echo third &gt; output.txt</p>
+<p>​	将文件 <code>output.txt</code> 内容改写为:</p>
+<pre class="line-numbers language-none"><code class="language-none">third<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+<li><p>echo forth &gt;&gt; output.txt</p>
+<p>将文件 <code>output.txt</code> 内容改写为:</p>
+<pre class="line-numbers language-none"><code class="language-none">third
+forth<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li>
 </ol>
-<h2 id="心得体会"><a href="#心得体会" class="headerlink" title="心得体会"></a>心得体会</h2><ol>
-<li>在开始写代码前确定好大致的架构十分重要！这样不仅可以避免代码写到中途突然找不到方向，还可以减小重构的可能性；</li>
-<li>自己做好测试，中测真的很弱！<span class="github-emoji"><span>😭</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f62d.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span> 第三次作业中在尝试提交并通过中测点后，并未对自己的代码进行进一步的测试，导致出现了 2 个很低级的错误；</li>
-<li>从第一周的新奇与紧张到第四周完全熟悉了 OO 课程的模式，希望可以在接下来的三个单元中更加从容地应对挑战。</li>
+<h3 id="Thinking-0-6"><a href="#Thinking-0-6" class="headerlink" title="Thinking 0.6"></a>Thinking 0.6</h3><p>使用你知道的方法（包括重定向）创建下图内容的文件（文件命名为 test），将创建该文件的命令序列保存在 command 文件中，并将 test 文件作为批处理文件运行，将运行结果输出至 result 文件中。给出 command 文件和 result 文件的内容，并对最后的结果进行解释说明（可以从 test 文件的内容入手）。具体实现的过程中思考下列问题: </p>
+<p>echo echo Shell Start 与 echo `echo Shell Start`效果是否有区别; </p>
+<p>echo echo$c&gt;file1 与 echo `echo $c&gt;file1`效果是否有区别. </p>
+<p><img src="/2023/03/22/buaa-os-2023-lab0/study\OS\实验报告\lab0\图0.14.png" alt="图0.14"></p>
+<ul>
+<li><p>command 文件内容：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">echo</span> <span class="token builtin class-name">echo</span> Shell Start<span class="token punctuation">..</span>. <span class="token operator">&gt;</span> <span class="token builtin class-name">test</span>
+<span class="token builtin class-name">echo</span> <span class="token builtin class-name">echo</span> <span class="token builtin class-name">set</span> a <span class="token operator">=</span> <span class="token number">1</span> <span class="token operator">&gt;&gt;</span> <span class="token builtin class-name">test</span>
+<span class="token builtin class-name">echo</span> <span class="token assign-left variable">a</span><span class="token operator">=</span><span class="token number">1</span> <span class="token operator">&gt;&gt;</span> <span class="token builtin class-name">test</span>
+<span class="token builtin class-name">echo</span> <span class="token builtin class-name">echo</span> <span class="token builtin class-name">set</span> b <span class="token operator">=</span> <span class="token number">2</span> <span class="token operator">&gt;&gt;</span> <span class="token builtin class-name">test</span>
+<span class="token builtin class-name">echo</span> <span class="token assign-left variable">b</span><span class="token operator">=</span><span class="token number">2</span> <span class="token operator">&gt;&gt;</span> <span class="token builtin class-name">test</span>
+<span class="token builtin class-name">echo</span> <span class="token builtin class-name">echo</span> <span class="token builtin class-name">set</span> c <span class="token operator">=</span> a+b <span class="token operator">&gt;&gt;</span> <span class="token builtin class-name">test</span>
+<span class="token builtin class-name">echo</span> <span class="token assign-left variable">c</span><span class="token operator">=</span><span class="token punctuation">\</span>$<span class="token punctuation">[</span><span class="token punctuation">\</span><span class="token variable">$a</span>+<span class="token punctuation">\</span><span class="token variable">$b</span><span class="token punctuation">]</span> <span class="token operator">&gt;&gt;</span> <span class="token builtin class-name">test</span>
+<span class="token builtin class-name">echo</span> <span class="token builtin class-name">echo</span> <span class="token assign-left variable">c</span><span class="token operator">=</span> <span class="token punctuation">\</span><span class="token variable">$c</span> <span class="token operator">&gt;&gt;</span> <span class="token builtin class-name">test</span>
+<span class="token builtin class-name">echo</span> <span class="token builtin class-name">echo</span> save c to ./file1 <span class="token operator">&gt;&gt;</span> <span class="token builtin class-name">test</span>
+<span class="token builtin class-name">echo</span> <span class="token string">'echo $c&gt;file1'</span> <span class="token operator">&gt;&gt;</span> <span class="token builtin class-name">test</span>
+<span class="token builtin class-name">echo</span> <span class="token builtin class-name">echo</span> save b to ./file2 <span class="token operator">&gt;&gt;</span> <span class="token builtin class-name">test</span>
+<span class="token builtin class-name">echo</span> <span class="token string">'echo $b&gt;file2'</span> <span class="token operator">&gt;&gt;</span> <span class="token builtin class-name">test</span>
+<span class="token builtin class-name">echo</span> <span class="token builtin class-name">echo</span> save a to ./file3 <span class="token operator">&gt;&gt;</span> <span class="token builtin class-name">test</span>
+<span class="token builtin class-name">echo</span> <span class="token string">'echo $a&gt;file3'</span> <span class="token operator">&gt;&gt;</span> <span class="token builtin class-name">test</span>
+<span class="token builtin class-name">echo</span> <span class="token builtin class-name">echo</span> save file1 file2 file3 to file4 <span class="token operator">&gt;&gt;</span> <span class="token builtin class-name">test</span>
+<span class="token builtin class-name">echo</span> <span class="token string">'cat file1&gt;file4'</span> <span class="token operator">&gt;&gt;</span> <span class="token builtin class-name">test</span>
+<span class="token builtin class-name">echo</span> <span class="token string">'cat file2&gt;&gt;file4'</span> <span class="token operator">&gt;&gt;</span> <span class="token builtin class-name">test</span>
+<span class="token builtin class-name">echo</span> <span class="token string">'cat file3&gt;&gt;file4'</span> <span class="token operator">&gt;&gt;</span> <span class="token builtin class-name">test</span>
+<span class="token builtin class-name">echo</span> <span class="token builtin class-name">echo</span> save file4 to ./result <span class="token operator">&gt;&gt;</span> <span class="token builtin class-name">test</span>
+<span class="token builtin class-name">echo</span> <span class="token string">'cat file4&gt;&gt;result'</span> <span class="token operator">&gt;&gt;</span> <span class="token builtin class-name">test</span>  <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>result 文件内容：</p>
+<pre class="line-numbers language-none"><code class="language-none">3
+2
+1<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></li>
+</ul>
+<p>下面根据 test 文件内容说明出现该结果的原因：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">echo</span> Shell Start<span class="token punctuation">..</span>. 						<span class="token comment">#输出 Shell Start...</span>
+<span class="token builtin class-name">echo</span> <span class="token builtin class-name">set</span> a <span class="token operator">=</span> <span class="token number">1</span>								<span class="token comment">#输出 set a = q</span>
+<span class="token assign-left variable">a</span><span class="token operator">=</span><span class="token number">1</span>											<span class="token comment">#给变量 a 赋值 1</span>
+<span class="token builtin class-name">echo</span> <span class="token builtin class-name">set</span> b <span class="token operator">=</span> <span class="token number">2</span>								<span class="token comment">#输出 set b = 2</span>
+<span class="token assign-left variable">b</span><span class="token operator">=</span><span class="token number">2</span>											<span class="token comment">#给变量 b 赋值 2</span>
+<span class="token builtin class-name">echo</span> <span class="token builtin class-name">set</span> c <span class="token operator">=</span> a+b							<span class="token comment">#输出 set c = a+b</span>
+<span class="token assign-left variable">c</span><span class="token operator">=</span>$<span class="token punctuation">[</span><span class="token variable">$a</span>+<span class="token variable">$b</span><span class="token punctuation">]</span>									<span class="token comment">#给变量 c 赋值 (a+b)</span>
+<span class="token builtin class-name">echo</span> <span class="token assign-left variable">c</span><span class="token operator">=</span> <span class="token variable">$c</span>									<span class="token comment">#输出 c= $c</span>
+<span class="token builtin class-name">echo</span> save c to ./file1						<span class="token comment">#输出 save c to ./file1</span>
+<span class="token builtin class-name">echo</span> <span class="token variable">$c</span><span class="token operator">&gt;</span>file1								<span class="token comment">#把变量 c 的值输出到文件 file1</span>
+<span class="token builtin class-name">echo</span> save b to ./file2						<span class="token comment">#输出 save b to ./file2</span>
+<span class="token builtin class-name">echo</span> <span class="token variable">$b</span><span class="token operator">&gt;</span>file2								<span class="token comment">#把变量 b 的值输出到文件 file2</span>
+<span class="token builtin class-name">echo</span> save a to ./file3						<span class="token comment">#输出 save a to ./file3	</span>
+<span class="token builtin class-name">echo</span> <span class="token variable">$a</span><span class="token operator">&gt;</span>file3 								<span class="token comment">#把变量 a 的值输出到文件 file3</span>
+<span class="token builtin class-name">echo</span> save file1 file2 file3 to file4 		<span class="token comment">#输出 save file1 file2 file3 to file4 </span>
+<span class="token function">cat</span> file<span class="token operator"><span class="token file-descriptor important">1</span>&gt;</span>file4 							<span class="token comment">#将 file4 改写为 file1 的内容</span>
+<span class="token function">cat</span> file<span class="token operator"><span class="token file-descriptor important">2</span>&gt;&gt;</span>file4 							<span class="token comment">#在 file4 后添加 file2 的内容</span>
+<span class="token function">cat</span> file<span class="token operator"><span class="token file-descriptor important">3</span>&gt;&gt;</span>file4 							<span class="token comment">#在 file4 后添加 file3 的内容</span>
+<span class="token builtin class-name">echo</span> save file4 to ./result 				<span class="token comment">#输出 save file4 to ./result </span>
+<span class="token function">cat</span> file<span class="token operator"><span class="token file-descriptor important">4</span>&gt;&gt;</span>result 							<span class="token comment">#在 result 后添加 file4 的内容</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li>echo echo Shell Start 与 echo `echo Shell Start`效果是否有区别？<ul>
+<li>没有区别，都是输出字符串 echo Shell Start</li>
+</ul>
+</li>
+<li>echo echo$c&gt;file1 与 echo `echo $c&gt;file1`效果是否有区别？<ul>
+<li>有区别，前者是用字符串 echo$c 写 file1，后者是输出字符串 echo $c&gt;file1</li>
+</ul>
+</li>
+</ul>
+<h2 id="难点分析"><a href="#难点分析" class="headerlink" title="难点分析"></a>难点分析</h2><ol>
+<li><p>对 <code>sed</code> 命令各个参数的熟练运用</p>
+<p>在 Exercise 0.1-3 中，要求提取 AAA 文件的第 8、32、128、512、1024 行的内容，并输入到文件 BBB 中，需要用到的 bash 文件为</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">touch</span> <span class="token variable">$2</span>
+<span class="token keyword">for</span> <span class="token for-or-select variable">line</span> <span class="token keyword">in</span> <span class="token number">8</span> <span class="token number">32</span> <span class="token number">128</span> <span class="token number">512</span> <span class="token number">1024</span> <span class="token builtin class-name">:</span>
+<span class="token keyword">do</span>
+	<span class="token function">sed</span> <span class="token parameter variable">-n</span> <span class="token string">"<span class="token variable">${line}</span>p"</span> <span class="token variable">$1</span> <span class="token operator">&gt;&gt;</span> <span class="token variable">$2</span>
+<span class="token keyword">done</span> <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>其中 $1 是待读取文件 AAA ，$2 是待写入文件 BBB。</p>
+</li>
+<li><p>Makefile 文件内部使用其他目录的 Makefile 文件</p>
+<p>在 Exercise 0.4-2 中，不同的 2 个目录下均有 Makefile 文件，在 csc/ 目录下的 Makefile 文件需使用到 csc/code/ 目录下的 Makefile 文件。要注意的是：</p>
+<ol>
+<li>在 Makefile 文件内需要使用相对路径来书写文件名等。</li>
+<li>可以在 Makefile 文件内通过 <code>cd</code> 命令来进入其他目录并执行其他目录的 Makefile 文件。</li>
 </ol>
-<hr>
+</li>
+<li><p><code>gcc</code> 命令 <code>-c</code> 参数的意义</p>
+<p>在使用 <code>gcc</code> 命令时，<code>-c</code> 参数指示编译器仅仅进行编译和汇编，并生成目标文件，而不进行链接操作。在 Exercise 0.4-2 中，main.c 文件调用了 fibo.c ，我在第一次编写指令时未添加 <code>-c</code> 参数，导致编译失败，应该先使用 <code>-c</code> 参数生成 2 个未进行链接的 .o 文件，再将两个 .o 文件使用不带 <code>-c</code> 参数的 <code>gcc</code> 命令进行链接。</p>
+</li>
+</ol>
+<h2 id="实验体会"><a href="#实验体会" class="headerlink" title="实验体会"></a>实验体会</h2><p>在 Lab0 课下实验中，我初步了解了 Linux 操作系统的命令行界面，学习到了一些基础指令的使用。其中，我对 Shell 脚本很感兴趣，这和我之前接触得更多的图形界面不同，它是一个命令的集合，是一种文本性的描述，实现了效率很高的精准自动化操作。我觉得学习自主编写 Shell 脚本并运行得到特定结果会是一件并不简单但很有乐趣的过程。另外，在上学期 cpp 课程初步了解 git 的基础上，我了解了 git 更深层的原理，也学到了更多的 git 指令。</p>
 
                 
             </div>
@@ -574,16 +609,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">
-                                    <span class="chip bg-color">面向对象</span>
-                                </a>
-                            
-                                <a href="/tags/JAVA/">
-                                    <span class="chip bg-color">JAVA</span>
-                                </a>
-                            
-                                <a href="/tags/%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D/">
-                                    <span class="chip bg-color">递归下降</span>
+                                <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
+                                    <span class="chip bg-color">操作系统</span>
                                 </a>
                             
                         </div>
@@ -627,17 +654,18 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2023/03/22/buaa-os-2023-lab1/">
+                <a href="/2023/03/22/buaa-os-2023-lab0/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/%20(6).png" class="responsive-img" alt="BUAA_OS_2023_Lab1">
+                        <img src="/medias/featureimages/%20(7).png" class="responsive-img" alt="BUAA_OS_2023_Lab0">
                         
-                        <span class="card-title">BUAA_OS_2023_Lab1</span>
+                        <span class="card-title">BUAA_OS_2023_Lab0</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -647,9 +675,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-03-22
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-03-22
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -662,6 +690,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -680,13 +709,13 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2023/03/22/buaa-co-2022-p7/">
+                <a href="/2023/03/22/buaa-os-2023-lab1/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/%20(16).jpg" class="responsive-img" alt="BUAA_CO_2022_P7">
+                        <img src="/medias/featureimages/%20(6).png" class="responsive-img" alt="BUAA_OS_2023_Lab1">
                         
-                        <span class="card-title">BUAA_CO_2022_P7</span>
+                        <span class="card-title">BUAA_OS_2023_Lab1</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -703,8 +732,8 @@
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90/" class="post-category">
-                                    计算机组成
+                            <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" class="post-category">
+                                    操作系统
                                 </a>
                             
                             
@@ -714,8 +743,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90/">
-                        <span class="chip bg-color">计算机组成</span>
+                    <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
+                        <span class="chip bg-color">操作系统</span>
                     </a>
                     
                 </div>
