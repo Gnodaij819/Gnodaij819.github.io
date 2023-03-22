@@ -411,7 +411,8 @@
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    P7_CPU_Document任务清单
+                                    P7_CPU_Document
+任务清单
 
 
 任务
@@ -428,7 +429,7 @@
 
 
 协处理器 CP0
-设置 CPU 的异常
+设置 CPU 的异
                                 
                             </div>
                             <div class="publish-info">
@@ -437,13 +438,23 @@
                                 </span>
                                 <span class="publish-author">
                                     
-                                    <i class="fas fa-user fa-fw"></i>
-                                    John Doe
+                                    <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                    
+                                    <a href="/categories/CO/" class="post-category">
+                                    CO
+                                    </a>
+                                    
                                     
                                 </span>
                             </div>
                         </div>
 
+                        
+                        <div class="card-action article-tags">
+                            
+                            <a href="/tags/CO/"><span class="chip bg-color">CO</span></a>
+                            
+                        </div>
                         
                     </div>
                 </div>
@@ -477,7 +488,8 @@
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    P6_CPU_Document流水线架构
+                                    P6_CPU_Document
+流水线架构
 
 
 阶段
@@ -496,7 +508,7 @@ D
 从寄存器文件中读取源操作数并对指令译码以便得到控制信号
 
 
-执行阶段（Execu
+执行阶段（Exec
                                 
                             </div>
                             <div class="publish-info">
@@ -555,8 +567,8 @@ D
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    [TOC]
-P5_CPU流水线架构
+                                    P5_CPU
+流水线架构
 
 
 阶段
@@ -576,6 +588,8 @@ D
 
 
 执行阶段（Execute）
+E
+使用
                                 
                             </div>
                             <div class="publish-info">
@@ -634,8 +648,8 @@ D
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    [TOC]
-CPU设计文档ctrl模块ctrl.v端口定义
+                                    CPU设计文档
+ctrl模块ctrl.v端口定义
 
 
 名称
@@ -664,7 +678,9 @@ O
 
 
 ALUSrc
-ALU操作数B选择
+ALU操作数B选择信号
+1
+
                                 
                             </div>
                             <div class="publish-info">
@@ -723,8 +739,7 @@ ALU操作数B选择
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    [TOC]
-CPU 设计文档
+                                    CPU 设计文档
 CPU模块设计NPC输入与输出输入
 PC[31:0]
 imm26[25:0]
@@ -736,7 +751,7 @@ isZero
 输出
 NPC[31:0]
 
-I
+IM(指令存储
                                 
                             </div>
                             <div class="publish-info">
@@ -795,7 +810,15 @@ I
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    $ma^3b^rc^u$
+                                    t1
+111
+t2222
+t3333
+hexo clean &amp;&amp; hexo g &amp;&amp; hexo s
+
+
+
+$ma^3b^rc^u$
 
                                 
                             </div>
@@ -910,7 +933,7 @@ I
     
     <div class="row">
         <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
-                   server="netease"
+                   server="tencent"
                    type="playlist"
                    id="503838841"
                    fixed='true'
@@ -930,7 +953,7 @@ I
 <script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
 
     
-    <div class="container row center-align" style="margin-bottom: 0px !important;">
+    <div class="container row center-align" style="margin-bottom: 15px !important;">
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             
@@ -959,6 +982,50 @@ I
             </span>
             
             <br>
+            
+            <span id="sitetime">载入运行时间...</span>
+            <script>
+                function siteTime() {
+                    var seconds = 1000;
+                    var minutes = seconds * 60;
+                    var hours = minutes * 60;
+                    var days = hours * 24;
+                    var years = days * 365;
+                    var today = new Date();
+                    var startYear = "2023";
+                    var startMonth = "3";
+                    var startDate = "21";
+                    var startHour = "18";
+                    var startMinute = "0";
+                    var startSecond = "0";
+                    var todayYear = today.getFullYear();
+                    var todayMonth = today.getMonth() + 1;
+                    var todayDate = today.getDate();
+                    var todayHour = today.getHours();
+                    var todayMinute = today.getMinutes();
+                    var todaySecond = today.getSeconds();
+                    var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                    var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                    var diff = t2 - t1;
+                    var diffYears = Math.floor(diff / years);
+                    var diffDays = Math.floor((diff / days) - diffYears * 365);
+                    var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+                    var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
+                        minutes);
+                    var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
+                        diffMinutes * minutes) / seconds);
+                    if (startYear == todayYear) {
+                        document.getElementById("year").innerHTML = todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffDays + " 天 " + diffHours +
+                            " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    } else {
+                        document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
+                            " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    }
+                }
+                setInterval(siteTime, 1000);
+            </script>
             
             <br>
             
@@ -1146,6 +1213,11 @@ $(function () {
     
 
 	
+    
+    <script type="text/javascript" color="0,0,255"
+        pointColor="0,0,255" opacity='0.6'
+        zIndex="-1" count="99"
+        src="/libs/background/canvas-nest.js"></script>
     
 
     

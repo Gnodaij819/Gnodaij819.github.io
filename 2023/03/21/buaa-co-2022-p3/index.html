@@ -322,8 +322,7 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>[TOC]</p>
-<h1 id="CPU-设计文档"><a href="#CPU-设计文档" class="headerlink" title="CPU 设计文档"></a>CPU 设计文档</h1><hr>
+                <h1 id="CPU-设计文档"><a href="#CPU-设计文档" class="headerlink" title="CPU 设计文档"></a>CPU 设计文档</h1><hr>
 <h2 id="CPU模块设计"><a href="#CPU模块设计" class="headerlink" title="CPU模块设计"></a>CPU模块设计</h2><h3 id="NPC"><a href="#NPC" class="headerlink" title="NPC"></a>NPC</h3><h4 id="输入与输出"><a href="#输入与输出" class="headerlink" title="输入与输出"></a>输入与输出</h4><h5 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h5><ul>
 <li><code>PC[31:0]</code></li>
 <li><code>imm26[25:0]</code></li>
@@ -703,7 +702,7 @@ add $s2, $a3, $a3      # 负负<span aria-hidden="true" class="line-numbers-rows
 
 <p>包含了正数加正数，正数加负数，负数加负数三种情况。可以在此基础上测试一下数据范围边界的一些数之间的 add 。</p>
 <h4 id="sub指令"><a href="#sub指令" class="headerlink" title="sub指令"></a>sub指令</h4><p>给出的测试样例未对 sub 指令进行测试。</p>
-<h4 id="sw指令"><a href="#sw指令" class="headerlink" title="sw指令"></a>sw指令</h4><pre class="line-numbers language-none"><code class="language-none">ori $t0, $0, 0x0000
+<h4 id="sw指令"><a href="#sw指令" class="headerlink" title="sw指令"></a>sw指令</h4><pre class="line-numbers language-assembly" data-language="assembly"><code class="language-assembly">ori $t0, $0, 0x0000
 sw $a0, 0($t0)
 sw $a1, 4($t0)
 sw $a2, 8($t0)
@@ -712,13 +711,13 @@ sw $s0, 16($t0)
 sw $s1, 20($t0)
 sw $s2, 24($t0)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h4 id="lw指令"><a href="#lw指令" class="headerlink" title="lw指令"></a>lw指令</h4><pre class="line-numbers language-none"><code class="language-none">lw $a0, 0($t0)
+<h4 id="lw指令"><a href="#lw指令" class="headerlink" title="lw指令"></a>lw指令</h4><pre class="line-numbers language-assembly" data-language="assembly"><code class="language-assembly">lw $a0, 0($t0)
 lw $a1, 12($t0)
 sw $a0, 28($t0)
 sw $a1, 32($t0)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>应该测试一下向 $0 写入数据的情况。</p>
-<h4 id="beq指令"><a href="#beq指令" class="headerlink" title="beq指令"></a>beq指令</h4><pre class="line-numbers language-none"><code class="language-none">ori $a0, $0, 1
+<h4 id="beq指令"><a href="#beq指令" class="headerlink" title="beq指令"></a>beq指令</h4><pre class="line-numbers language-assembly" data-language="assembly"><code class="language-assembly">ori $a0, $0, 1
 ori $a1, $0, 2
 ori $a2, $0, 1
 
@@ -730,27 +729,27 @@ loop2:sw $a1, 40($t0)<span aria-hidden="true" class="line-numbers-rows"><span></
 
 
 
-<h2 id="测试方案"><a href="#测试方案" class="headerlink" title="测试方案"></a>测试方案</h2><h3 id="ori指令-1"><a href="#ori指令-1" class="headerlink" title="ori指令"></a>ori指令</h3><pre class="line-numbers language-none"><code class="language-none">ori $a0, 123
+<h2 id="测试方案"><a href="#测试方案" class="headerlink" title="测试方案"></a>测试方案</h2><h3 id="ori指令-1"><a href="#ori指令-1" class="headerlink" title="ori指令"></a>ori指令</h3><pre class="line-numbers language-assembly" data-language="assembly"><code class="language-assembly">ori $a0, 123
 ori $a1, 456<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
-<h3 id="lui指令-1"><a href="#lui指令-1" class="headerlink" title="lui指令"></a>lui指令</h3><pre class="line-numbers language-none"><code class="language-none">lui $a2, 234
+<h3 id="lui指令-1"><a href="#lui指令-1" class="headerlink" title="lui指令"></a>lui指令</h3><pre class="line-numbers language-assembly" data-language="assembly"><code class="language-assembly">lui $a2, 234
 lui $a2, 123            # 符号位为 0<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
-<h3 id="add指令"><a href="#add指令" class="headerlink" title="add指令"></a>add指令</h3><pre class="line-numbers language-none"><code class="language-none">add $t0, $a0, $a1       # 测试正数+正数
+<h3 id="add指令"><a href="#add指令" class="headerlink" title="add指令"></a>add指令</h3><pre class="line-numbers language-assembly" data-language="assembly"><code class="language-assembly">add $t0, $a0, $a1       # 测试正数+正数
 lui $a3, 0xffff         # 符号位为 1
 ori $a3, $a3, 0xffff    # $a3 = -1(先构造一个负数)
 add $t1, $a0, $a3       # 测试正数+负数
 add $t2, $a3, $a3       # 测试负数+负数<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h3 id="sub指令-1"><a href="#sub指令-1" class="headerlink" title="sub指令"></a>sub指令</h3><pre class="line-numbers language-none"><code class="language-none">sub $t0, $a0, $a1       # 测试正数-正数(结果为负数)
+<h3 id="sub指令-1"><a href="#sub指令-1" class="headerlink" title="sub指令"></a>sub指令</h3><pre class="line-numbers language-assembly" data-language="assembly"><code class="language-assembly">sub $t0, $a0, $a1       # 测试正数-正数(结果为负数)
 sub $t1, $a3, $a0       # 测试负数-正数
 sub $t2, $a3, $t0       # 测试负数-负数
 sub $t3, $a3, $a1       # 测试负数-正数<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h3 id="xor指令"><a href="#xor指令" class="headerlink" title="xor指令"></a>xor指令</h3><pre class="line-numbers language-none"><code class="language-none">xor $t4, $a0, $a1
+<h3 id="xor指令"><a href="#xor指令" class="headerlink" title="xor指令"></a>xor指令</h3><pre class="line-numbers language-assembly" data-language="assembly"><code class="language-assembly">xor $t4, $a0, $a1
 xor $t5, $a0, $a2   <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
-<h3 id="sw指令-1"><a href="#sw指令-1" class="headerlink" title="sw指令"></a>sw指令</h3><pre class="line-numbers language-none"><code class="language-none">ori $t0, $0, 0x0000
+<h3 id="sw指令-1"><a href="#sw指令-1" class="headerlink" title="sw指令"></a>sw指令</h3><pre class="line-numbers language-assembly" data-language="assembly"><code class="language-assembly">ori $t0, $0, 0x0000
 sw $a0, 0($t0)
 sw $a1, 4($t0)
 sw $a2, 8($t0)
@@ -759,14 +758,14 @@ sw $t1, 20($t0)
 sw $t2, 28($t0)
 sw $t3, 32($t0)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h3 id="lw指令-1"><a href="#lw指令-1" class="headerlink" title="lw指令"></a>lw指令</h3><pre class="line-numbers language-none"><code class="language-none">lw $0, 0($t0)
+<h3 id="lw指令-1"><a href="#lw指令-1" class="headerlink" title="lw指令"></a>lw指令</h3><pre class="line-numbers language-assembly" data-language="assembly"><code class="language-assembly">lw $0, 0($t0)
 lw $a1, 0($t0)
 lw $a0, 8($t0)
 lw $a0, 12($t0)
 sw $a0, 24($t0)
 sw $a1, 28($t0)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h3 id="beq指令-1"><a href="#beq指令-1" class="headerlink" title="beq指令"></a>beq指令</h3><pre class="line-numbers language-none"><code class="language-none">ori $a0, $0, 1
+<h3 id="beq指令-1"><a href="#beq指令-1" class="headerlink" title="beq指令"></a>beq指令</h3><pre class="line-numbers language-assembly" data-language="assembly"><code class="language-assembly">ori $a0, $0, 1
 ori $a1, $0, 2
 ori $a2, $0, 1
 
@@ -778,7 +777,7 @@ sw $a1, 36($t0)
 beq2:
 sw $a1, 40($t0)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h3 id="完整测试样例"><a href="#完整测试样例" class="headerlink" title="完整测试样例"></a>完整测试样例</h3><pre class="line-numbers language-none"><code class="language-none">ori $a0, 123
+<h3 id="完整测试样例"><a href="#完整测试样例" class="headerlink" title="完整测试样例"></a>完整测试样例</h3><pre class="line-numbers language-assembly" data-language="assembly"><code class="language-assembly">ori $a0, 123
 ori $a1, 456
 
 add $t0, $a0, $a1      
@@ -830,56 +829,6 @@ sw $a1, 40($t0)<span aria-hidden="true" class="line-numbers-rows"><span></span><
 
             
 
-    <div class="reprint" id="reprint-statement">
-        
-            <div class="reprint__author">
-                <span class="reprint-meta" style="font-weight: bold;">
-                    <i class="fas fa-user">
-                        文章作者:
-                    </i>
-                </span>
-                <span class="reprint-info">
-                    <a href="/about" rel="external nofollow noreferrer">Gnodaij</a>
-                </span>
-            </div>
-            <div class="reprint__type">
-                <span class="reprint-meta" style="font-weight: bold;">
-                    <i class="fas fa-link">
-                        文章链接:
-                    </i>
-                </span>
-                <span class="reprint-info">
-                    <a href="https://Gnodaij819.github.io/2023/03/21/buaa-co-2022-p3/">https://Gnodaij819.github.io/2023/03/21/buaa-co-2022-p3/</a>
-                </span>
-            </div>
-            <div class="reprint__notice">
-                <span class="reprint-meta" style="font-weight: bold;">
-                    <i class="fas fa-copyright">
-                        版权声明:
-                    </i>
-                </span>
-                <span class="reprint-info">
-                    本博客所有文章除特別声明外，均采用
-                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
-                    许可协议。转载请注明来源
-                    <a href="/about" target="_blank">Gnodaij</a>
-                    !
-                </span>
-            </div>
-        
-    </div>
-
-    <script async defer>
-      document.addEventListener("copy", function (e) {
-        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
-        M.toast({html: toastHTML})
-      });
-
-      function navToReprintStatement() {
-        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
-      }
-    </script>
-
 
 
             <div class="tag_share" style="display: block;">
@@ -899,7 +848,7 @@ sw $a1, 40($t0)<span aria-hidden="true" class="line-numbers-rows"><span></span><
 <div id="article-share">
 
     
-    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
     <script src="/libs/share/js/social-share.min.js"></script>
     
 
@@ -1126,7 +1075,7 @@ sw $a1, 40($t0)<span aria-hidden="true" class="line-numbers-rows"><span></span><
     
     <div class="row">
         <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
-                   server="netease"
+                   server="tencent"
                    type="playlist"
                    id="503838841"
                    fixed='true'
@@ -1146,7 +1095,7 @@ sw $a1, 40($t0)<span aria-hidden="true" class="line-numbers-rows"><span></span><
 <script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
 
     
-    <div class="container row center-align" style="margin-bottom: 0px !important;">
+    <div class="container row center-align" style="margin-bottom: 15px !important;">
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             
@@ -1175,6 +1124,50 @@ sw $a1, 40($t0)<span aria-hidden="true" class="line-numbers-rows"><span></span><
             </span>
             
             <br>
+            
+            <span id="sitetime">载入运行时间...</span>
+            <script>
+                function siteTime() {
+                    var seconds = 1000;
+                    var minutes = seconds * 60;
+                    var hours = minutes * 60;
+                    var days = hours * 24;
+                    var years = days * 365;
+                    var today = new Date();
+                    var startYear = "2023";
+                    var startMonth = "3";
+                    var startDate = "21";
+                    var startHour = "18";
+                    var startMinute = "0";
+                    var startSecond = "0";
+                    var todayYear = today.getFullYear();
+                    var todayMonth = today.getMonth() + 1;
+                    var todayDate = today.getDate();
+                    var todayHour = today.getHours();
+                    var todayMinute = today.getMinutes();
+                    var todaySecond = today.getSeconds();
+                    var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                    var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                    var diff = t2 - t1;
+                    var diffYears = Math.floor(diff / years);
+                    var diffDays = Math.floor((diff / days) - diffYears * 365);
+                    var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+                    var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
+                        minutes);
+                    var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
+                        diffMinutes * minutes) / seconds);
+                    if (startYear == todayYear) {
+                        document.getElementById("year").innerHTML = todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffDays + " 天 " + diffHours +
+                            " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    } else {
+                        document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
+                            " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    }
+                }
+                setInterval(siteTime, 1000);
+            </script>
             
             <br>
             
@@ -1362,6 +1355,11 @@ $(function () {
     
 
 	
+    
+    <script type="text/javascript" color="0,0,255"
+        pointColor="0,0,255" opacity='0.6'
+        zIndex="-1" count="99"
+        src="/libs/background/canvas-nest.js"></script>
     
 
     
