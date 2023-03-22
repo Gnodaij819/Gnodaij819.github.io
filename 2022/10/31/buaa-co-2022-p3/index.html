@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="BUAA_OS_2023_Lab0, Gnodaij&#39;s Blog">
+    <meta name="keywords" content="BUAA_CO_2022_P3, Gnodaij&#39;s Blog">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>BUAA_OS_2023_Lab0 | Gnodaij&#39;s Blog</title>
+    <title>BUAA_CO_2022_P3 | Gnodaij&#39;s Blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -246,12 +246,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/%20(7).png')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/%20(20).jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">BUAA_OS_2023_Lab0</h1>
+                    <h1 class="description center-align post-title">BUAA_CO_2022_P3</h1>
                 </div>
             </div>
         </div>
@@ -367,8 +367,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
-                                <span class="chip bg-color">操作系统</span>
+                            <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90/">
+                                <span class="chip bg-color">计算机组成</span>
                             </a>
                         
                     </div>
@@ -379,8 +379,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" class="post-category">
-                                操作系统
+                            <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90/" class="post-category">
+                                计算机组成
                             </a>
                         
                     </div>
@@ -416,185 +416,506 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="Lab0-实验报告"><a href="#Lab0-实验报告" class="headerlink" title="Lab0 实验报告"></a>Lab0 实验报告</h1><h2 id="思考题"><a href="#思考题" class="headerlink" title="思考题"></a>思考题</h2><h3 id="Thinking-0-1"><a href="#Thinking-0-1" class="headerlink" title="Thinking 0.1"></a>Thinking 0.1</h3><p>在前述已初始化的 <code>~/learnGit</code> 目录下，创建一个名为 <code>README.txt</code> 的文件，执行命令 <code>git status &gt; Untracked.txt</code> 后，<code>Untracked.txt</code> 文件的内容为：</p>
-<pre class="line-numbers language-none"><code class="language-none">位于分支 master
+                <h1 id="CPU-设计文档"><a href="#CPU-设计文档" class="headerlink" title="CPU 设计文档"></a>CPU 设计文档</h1><hr>
+<h2 id="CPU模块设计"><a href="#CPU模块设计" class="headerlink" title="CPU模块设计"></a>CPU模块设计</h2><h3 id="NPC"><a href="#NPC" class="headerlink" title="NPC"></a>NPC</h3><h4 id="输入与输出"><a href="#输入与输出" class="headerlink" title="输入与输出"></a>输入与输出</h4><h5 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h5><ul>
+<li><code>PC[31:0]</code></li>
+<li><code>imm26[25:0]</code></li>
+<li><code>EXT_IMM16[31:0]</code></li>
+<li><code>GPR[rs][31:0]</code></li>
+<li><code>nPC_sel[1:0]</code></li>
+<li><code>isZero</code></li>
+</ul>
+<h5 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h5><ul>
+<li><code>NPC[31:0]</code></li>
+</ul>
+<h3 id="IM-指令存储器"><a href="#IM-指令存储器" class="headerlink" title="IM(指令存储器)"></a>IM(指令存储器)</h3><h4 id="输入与输出-1"><a href="#输入与输出-1" class="headerlink" title="输入与输出"></a>输入与输出</h4><h5 id="输入-1"><a href="#输入-1" class="headerlink" title="输入"></a>输入</h5><ul>
+<li><code>PC[31:0]</code></li>
+</ul>
+<h5 id="输出-1"><a href="#输出-1" class="headerlink" title="输出"></a>输出</h5><ul>
+<li>指令<code>Instruction[31:0]</code></li>
+</ul>
+<h4 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h4><ul>
+<li>这里使用到的存储器是ROM存储器，ROM是只读存储器，具有非易失性</li>
+</ul>
+<h4 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h4><ul>
+<li><p>实际地址宽度为5位，所以ROM的Address Bit Width应设置为5  </p>
+</li>
+<li><p>向ROM中读指令时，文件头应为：</p>
+</li>
+</ul>
+<pre class="line-numbers language-none"><code class="language-none">v2.0 raw<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-尚无提交
-
-未跟踪的文件:
-  （使用 "git add &lt;文件&gt;..." 以包含要提交的内容）
-        README.txt
-        Untracked.txt
-
-提交为空，但是存在尚未跟踪的文件（使用 "git add" 建立跟踪）<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<p>在 <code>README.txt</code> 文件中添加一行内容 <code>HELLO WORLD!</code> ，然后执行 <code> git add README.txt</code>  命令，再执行命令 <code>git status &gt; Stage.txt</code> ， <code>Stage.txt</code> 文件的内容为：</p>
-<pre class="line-numbers language-none"><code class="language-none">位于分支 master
-
-尚无提交
-
-要提交的变更：
-  （使用 "git rm --cached &lt;文件&gt;..." 以取消暂存）
-        新文件：   README.txt
-
-未跟踪的文件:
-  （使用 "git add &lt;文件&gt;..." 以包含要提交的内容）
-        Stage.txt
-        Untracked.txt<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<p>发现经过 <code>add</code> 命令， <code>README.txt</code> 文件从“未跟踪的文件”移至了“要提交的变更”，即由 Untracked 变为 Staged 。</p>
-<p>执行命令 <code>git commit -m "21373311 README.txt"</code> ，发现 <code>README.txt</code> 文件已从 Staged 区移除。</p>
-<p>在 <code>README.txt</code> 文件后添加一行内容 <code>HELLO OS!</code> ，再执行命令 <code>git status &gt; Modified.txt</code> ， <code>Modified.txt</code> 文件的内容为：</p>
-<pre class="line-numbers language-none"><code class="language-none">位于分支 master
-尚未暂存以备提交的变更：
-  （使用 "git add &lt;文件&gt;..." 更新要提交的内容）
-  （使用 "git restore &lt;文件&gt;..." 丢弃工作区的改动）
-        修改：     README.txt
-
-未跟踪的文件:
-  （使用 "git add &lt;文件&gt;..." 以包含要提交的内容）
-        Modified.txt
-        Stage.txt
-        Untracked.txt
-
-修改尚未加入提交（使用 "git add" 和/或 "git commit -a"）<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<p>和第一次执行 <code>add</code> 命令之前的 status 相比， <code>README.txt</code> 文件的位置不再是“未跟踪的文件”，而是“尚未暂存以备提交的变更“。原因是经过 <code>add</code> 命令后， <code>README.txt</code> 已被添加至 Git 的暂存区， Git 会跟踪该文件的变化，所以之后该文件若又被修改，则会出现在已修改部分而不是未跟踪部分。</p>
-<h3 id="Thinking-0-2"><a href="#Thinking-0-2" class="headerlink" title="Thinking 0.2"></a>Thinking 0.2</h3><p>仔细看看0.10，思考一下箭头中的 <code>add the file</code> 、<code>stage the file</code> 和<br><code>commit</code> 分别对应的是 Git 里的哪些命令呢？</p>
-<p><img src="/2023/03/22/buaa-os-2023-lab0/study\OS\实验报告\lab0\图0.10.png" alt="图0.10"></p>
+<h3 id="DM-数据存储器"><a href="#DM-数据存储器" class="headerlink" title="DM(数据存储器)"></a>DM(数据存储器)</h3><h4 id="输入与输出-2"><a href="#输入与输出-2" class="headerlink" title="输入与输出"></a>输入与输出</h4><h5 id="输入-2"><a href="#输入-2" class="headerlink" title="输入"></a>输入</h5><ul>
+<li>写地址<code>Addr[31:0]</code></li>
+<li>写入数据<code>WD[31:0]</code></li>
+<li>写使能信号<code>MemWrite</code></li>
+<li><code>MemtoReg</code></li>
+<li>异步复位信号<code>reset</code></li>
+</ul>
+<h5 id="输出-2"><a href="#输出-2" class="headerlink" title="输出"></a>输出</h5><ul>
+<li>数据输出<code>RD[31:0]</code></li>
+</ul>
+<h4 id="实现-1"><a href="#实现-1" class="headerlink" title="实现"></a>实现</h4><ul>
+<li>这里使用的存储器是RAM</li>
+</ul>
+<h3 id="ALU-算术逻辑单元"><a href="#ALU-算术逻辑单元" class="headerlink" title="ALU(算术逻辑单元)"></a>ALU(算术逻辑单元)</h3><h4 id="输入与输出-3"><a href="#输入与输出-3" class="headerlink" title="输入与输出"></a>输入与输出</h4><h5 id="输入-3"><a href="#输入-3" class="headerlink" title="输入"></a>输入</h5><ul>
+<li>运算数<code>A[31:0]</code></li>
+<li>运算数<code>B[31:0]</code></li>
+<li>ALU控制码<code>ALUop[3:0]</code></li>
+</ul>
+<h5 id="输出-3"><a href="#输出-3" class="headerlink" title="输出"></a>输出</h5><ul>
+<li>运算结果<code>Result[31:0]</code></li>
+<li>零判断<code>isZero</code></li>
+</ul>
+<h4 id="ALU控制码"><a href="#ALU控制码" class="headerlink" title="ALU控制码"></a>ALU控制码</h4><p>根据ALU控制码<code>ALUop</code>来确定进行何种运算：  </p>
+<table>
+<thead>
+<tr>
+<th align="center">ALUop</th>
+<th align="center">Function</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">0000</td>
+<td align="center">ADD</td>
+</tr>
+<tr>
+<td align="center">0001</td>
+<td align="center">SUB</td>
+</tr>
+<tr>
+<td align="center">0010</td>
+<td align="center">OR</td>
+</tr>
+<tr>
+<td align="center">0011</td>
+<td align="center">AND</td>
+</tr>
+<tr>
+<td align="center">0100</td>
+<td align="center">XOR</td>
+</tr>
+</tbody></table>
+<h4 id="实现-2"><a href="#实现-2" class="headerlink" title="实现"></a>实现</h4><ul>
+<li><p>这里<code>ALUop</code>用了4位，以便于后续添加各种类型的运算</p>
+</li>
+<li><p>添加零判断输出<code>isZero</code>可以在<code>beq</code>等指令中快速判断结果</p>
+</li>
+</ul>
+<h3 id="Controller-控制器"><a href="#Controller-控制器" class="headerlink" title="Controller(控制器)"></a>Controller(控制器)</h3><h4 id="输入与输出-4"><a href="#输入与输出-4" class="headerlink" title="输入与输出"></a>输入与输出</h4><h5 id="输入-4"><a href="#输入-4" class="headerlink" title="输入"></a>输入</h5><ul>
+<li><code>opcode[5:0]</code>  </li>
+<li><code>funct[5:0]</code></li>
+</ul>
+<h5 id="输出-4"><a href="#输出-4" class="headerlink" title="输出"></a>输出</h5><ul>
+<li><code>RegDst</code></li>
+<li><code>ALUSrc</code></li>
+<li><code>MemtoReg</code></li>
+<li><code>RegWrite</code></li>
+<li><code>nPC_sel[1:0]</code></li>
+<li><code>ALUctr</code></li>
+</ul>
+<h4 id="“与”逻辑部分"><a href="#“与”逻辑部分" class="headerlink" title="“与”逻辑部分"></a>“与”逻辑部分</h4><p>根据 <code>opcode</code> 与 <code>funct</code> 将输入的机器码识别为相应的指令：  </p>
+<table>
+<thead>
+<tr>
+<th align="center">Instruction</th>
+<th align="center">opcode</th>
+<th align="center">funct</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">add</td>
+<td align="center">000000</td>
+<td align="center">100000</td>
+</tr>
+<tr>
+<td align="center">sub</td>
+<td align="center">000000</td>
+<td align="center">100010</td>
+</tr>
+<tr>
+<td align="center">ori</td>
+<td align="center">001101</td>
+<td align="center">n/a</td>
+</tr>
+<tr>
+<td align="center">lw</td>
+<td align="center">100011</td>
+<td align="center">n/a</td>
+</tr>
+<tr>
+<td align="center">sw</td>
+<td align="center">101011</td>
+<td align="center">n/a</td>
+</tr>
+<tr>
+<td align="center">beq</td>
+<td align="center">000100</td>
+<td align="center">n/a</td>
+</tr>
+<tr>
+<td align="center">lui</td>
+<td align="center">001111</td>
+<td align="center">n/a</td>
+</tr>
+</tbody></table>
+<h4 id="“或”逻辑部分"><a href="#“或”逻辑部分" class="headerlink" title="“或”逻辑部分"></a>“或”逻辑部分</h4><p>根据指令生成相应的控制信号：  </p>
+<table>
+<thead>
+<tr>
+<th align="center"></th>
+<th align="center">add</th>
+<th align="center">sub</th>
+<th align="center">xor</th>
+<th align="center">ori</th>
+<th align="center">lw</th>
+<th align="center">sw</th>
+<th align="center">beq</th>
+<th align="center">lui</th>
+<th align="center">j</th>
+<th align="center">jal</th>
+<th align="center">jr</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><strong>RegDst</strong></td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="center">0</td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="center">X</td>
+</tr>
+<tr>
+<td align="center"><strong>ALUSrc</strong></td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="center">X</td>
+</tr>
+<tr>
+<td align="center"><strong>MemtoReg</strong></td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="center">0</td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="center">X</td>
+</tr>
+<tr>
+<td align="center"><strong>RegWrite</strong></td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">0</td>
+</tr>
+<tr>
+<td align="center"><strong>MemWrite</strong></td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+</tr>
+<tr>
+<td align="center"><strong>nPC_sel</strong></td>
+<td align="center">00</td>
+<td align="center">00</td>
+<td align="center">00</td>
+<td align="center">00</td>
+<td align="center">00</td>
+<td align="center">00</td>
+<td align="center">01</td>
+<td align="center">00</td>
+<td align="center">10</td>
+<td align="center">10</td>
+<td align="center">11</td>
+</tr>
+<tr>
+<td align="center"><strong>ALUctr</strong></td>
+<td align="center">ADD</td>
+<td align="center">SUB</td>
+<td align="center">XOR</td>
+<td align="center">OR</td>
+<td align="center">ADD</td>
+<td align="center">ADD</td>
+<td align="center">SUB</td>
+<td align="center">ADD</td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="center">X</td>
+</tr>
+<tr>
+<td align="center"><strong>ExtOp</strong></td>
+<td align="center">None</td>
+<td align="center">None</td>
+<td align="center">None</td>
+<td align="center">Zero</td>
+<td align="center">Sign</td>
+<td align="center">Sign</td>
+<td align="center">Sign</td>
+<td align="center">High</td>
+<td align="center">None</td>
+<td align="center">None</td>
+<td align="center">None</td>
+</tr>
+</tbody></table>
+<h4 id="各控制信号功能"><a href="#各控制信号功能" class="headerlink" title="各控制信号功能"></a>各控制信号功能</h4><ul>
+<li><p>RegDst：由于R型指令和I型指令所要写入的寄存器对应指令中的位数不同，需要该信号来控制写入哪个寄存器。R型指令置1（写入rd），I型指令置0（写入rt）。  </p>
+</li>
+<li><p>ALUSrc：选择ALU的操作数B是从寄存器中读取的还是立即数，R型指令（从寄存器中读取数）置0，I型指令（立即数）置1。  </p>
+</li>
+<li><p>MemtoReg：选择写入寄存器堆的值的选择信号</p>
 <ul>
-<li>add the file: 对应 <code>git add [filename]</code> 命令</li>
-<li>stage the file: 对应 <code>git add [filename]</code> 命令</li>
-<li>commit: 对应 <code>git commit</code> 命令</li>
-</ul>
-<h3 id="Thinking-0-3"><a href="#Thinking-0-3" class="headerlink" title="Thinking 0.3"></a>Thinking 0.3</h3><ol>
-<li><p>代码文件 print.c 被错误删除时，应当使用什么命令将其恢复？</p>
-<ul>
-<li><code>git checkout -- print.c</code></li>
+<li>00：运算器运算结果</li>
+<li>01：还是存储器中取出的数</li>
+<li>10：PC + 4</li>
 </ul>
 </li>
-<li><p>代码文件 print.c 被错误删除后，执行了 git rm print.c 命令，此时应当<br>使用什么命令将其恢复？</p>
-<ul>
-<li><code>git reset HEAD print.c</code></li>
-<li><code>git checkout -- print.c</code></li>
+<li><p>RegWrite：寄存器(GRF)写使能。  </p>
+</li>
+<li><p>MemWrite：数据存储器(DM)写使能。  </p>
+</li>
+<li><p>nPC_sel：跳转信号，beq指令置01，j、jal指令置10，jr指令置11。    </p>
+</li>
+<li><p>ALUctr：选择需要何种运算操作（见ALU部分）。  </p>
+</li>
+<li><p>ExtOp：选择需要何种位扩展操作（见Ext部分）。</p>
+</li>
 </ul>
-</li>
-<li><p>无关文件 hello.txt 已经被添加到暂存区时，如何在不删除此文件的前提下<br>将其移出暂存区？</p>
-<ul>
-<li><code>git rm --cached hello.txt</code></li>
+<h3 id="Ex-位扩展器"><a href="#Ex-位扩展器" class="headerlink" title="Ex(位扩展器)"></a>Ex(位扩展器)</h3><h4 id="输入与输出-5"><a href="#输入与输出-5" class="headerlink" title="输入与输出"></a>输入与输出</h4><h5 id="输入-5"><a href="#输入-5" class="headerlink" title="输入"></a>输入</h5><ul>
+<li>16位立即数<code>Imm[15:0]</code>  </li>
+<li>位扩展方式<code>ExtOp[1:0]</code></li>
 </ul>
-</li>
-</ol>
-<h3 id="Thinking-0-4"><a href="#Thinking-0-4" class="headerlink" title="Thinking 0.4"></a>Thinking 0.4</h3><p>找到在 <code>/home/21xxxxxx/learnGit</code> 下刚刚创建的 <code>README.txt</code> 文件，在文件里加入 Testing 1，git add，git commit，提交说明记为 1 。</p>
-<p>模仿上述做法，把 1 分别改为 2 和 3，再提交两次。</p>
-<p>进行版本回退。执行命令 <code>git reset --hard HEAD^</code> 后，再执行 <code>git log</code> ，观<br>察其变化，发现<strong>哈希值为 3 的提交已经消失</strong>。</p>
-<p>找到提交说明为 1 的哈希值，执行命令 <code>git reset --hard &lt;hash&gt;</code> 后，再执<br>行 <code>git log</code> ，观察其变化，发现 <strong>3 次提交均已消失</strong>。</p>
-<p>现在已经回到了旧版本，为了再次回到新版本，执行 <code>git reset --hard &lt;hash&gt;</code> ，再执行 <code>git log</code> ，观察其变化，发现 <strong>3 次提交再次出现</strong>。</p>
-<h3 id="Thinking-0-5"><a href="#Thinking-0-5" class="headerlink" title="Thinking 0.5"></a>Thinking 0.5</h3><p>执行如下命令, 并查看结果</p>
-<ol>
-<li><p>echo first</p>
-<p>输出 first</p>
-</li>
-<li><p>echo second &gt; output.txt</p>
-<p>将文件 <code>output.txt</code> 内容改写为:</p>
-<pre class="line-numbers language-none"><code class="language-none">second<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-</li>
-<li><p>echo third &gt; output.txt</p>
-<p>​	将文件 <code>output.txt</code> 内容改写为:</p>
-<pre class="line-numbers language-none"><code class="language-none">third<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-</li>
-<li><p>echo forth &gt;&gt; output.txt</p>
-<p>将文件 <code>output.txt</code> 内容改写为:</p>
-<pre class="line-numbers language-none"><code class="language-none">third
-forth<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li>
-</ol>
-<h3 id="Thinking-0-6"><a href="#Thinking-0-6" class="headerlink" title="Thinking 0.6"></a>Thinking 0.6</h3><p>使用你知道的方法（包括重定向）创建下图内容的文件（文件命名为 test），将创建该文件的命令序列保存在 command 文件中，并将 test 文件作为批处理文件运行，将运行结果输出至 result 文件中。给出 command 文件和 result 文件的内容，并对最后的结果进行解释说明（可以从 test 文件的内容入手）。具体实现的过程中思考下列问题: </p>
-<p>echo echo Shell Start 与 echo `echo Shell Start`效果是否有区别; </p>
-<p>echo echo$c&gt;file1 与 echo `echo $c&gt;file1`效果是否有区别. </p>
-<p><img src="/2023/03/22/buaa-os-2023-lab0/study\OS\实验报告\lab0\图0.14.png" alt="图0.14"></p>
-<ul>
-<li><p>command 文件内容：</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">echo</span> <span class="token builtin class-name">echo</span> Shell Start<span class="token punctuation">..</span>. <span class="token operator">&gt;</span> <span class="token builtin class-name">test</span>
-<span class="token builtin class-name">echo</span> <span class="token builtin class-name">echo</span> <span class="token builtin class-name">set</span> a <span class="token operator">=</span> <span class="token number">1</span> <span class="token operator">&gt;&gt;</span> <span class="token builtin class-name">test</span>
-<span class="token builtin class-name">echo</span> <span class="token assign-left variable">a</span><span class="token operator">=</span><span class="token number">1</span> <span class="token operator">&gt;&gt;</span> <span class="token builtin class-name">test</span>
-<span class="token builtin class-name">echo</span> <span class="token builtin class-name">echo</span> <span class="token builtin class-name">set</span> b <span class="token operator">=</span> <span class="token number">2</span> <span class="token operator">&gt;&gt;</span> <span class="token builtin class-name">test</span>
-<span class="token builtin class-name">echo</span> <span class="token assign-left variable">b</span><span class="token operator">=</span><span class="token number">2</span> <span class="token operator">&gt;&gt;</span> <span class="token builtin class-name">test</span>
-<span class="token builtin class-name">echo</span> <span class="token builtin class-name">echo</span> <span class="token builtin class-name">set</span> c <span class="token operator">=</span> a+b <span class="token operator">&gt;&gt;</span> <span class="token builtin class-name">test</span>
-<span class="token builtin class-name">echo</span> <span class="token assign-left variable">c</span><span class="token operator">=</span><span class="token punctuation">\</span>$<span class="token punctuation">[</span><span class="token punctuation">\</span><span class="token variable">$a</span>+<span class="token punctuation">\</span><span class="token variable">$b</span><span class="token punctuation">]</span> <span class="token operator">&gt;&gt;</span> <span class="token builtin class-name">test</span>
-<span class="token builtin class-name">echo</span> <span class="token builtin class-name">echo</span> <span class="token assign-left variable">c</span><span class="token operator">=</span> <span class="token punctuation">\</span><span class="token variable">$c</span> <span class="token operator">&gt;&gt;</span> <span class="token builtin class-name">test</span>
-<span class="token builtin class-name">echo</span> <span class="token builtin class-name">echo</span> save c to ./file1 <span class="token operator">&gt;&gt;</span> <span class="token builtin class-name">test</span>
-<span class="token builtin class-name">echo</span> <span class="token string">'echo $c&gt;file1'</span> <span class="token operator">&gt;&gt;</span> <span class="token builtin class-name">test</span>
-<span class="token builtin class-name">echo</span> <span class="token builtin class-name">echo</span> save b to ./file2 <span class="token operator">&gt;&gt;</span> <span class="token builtin class-name">test</span>
-<span class="token builtin class-name">echo</span> <span class="token string">'echo $b&gt;file2'</span> <span class="token operator">&gt;&gt;</span> <span class="token builtin class-name">test</span>
-<span class="token builtin class-name">echo</span> <span class="token builtin class-name">echo</span> save a to ./file3 <span class="token operator">&gt;&gt;</span> <span class="token builtin class-name">test</span>
-<span class="token builtin class-name">echo</span> <span class="token string">'echo $a&gt;file3'</span> <span class="token operator">&gt;&gt;</span> <span class="token builtin class-name">test</span>
-<span class="token builtin class-name">echo</span> <span class="token builtin class-name">echo</span> save file1 file2 file3 to file4 <span class="token operator">&gt;&gt;</span> <span class="token builtin class-name">test</span>
-<span class="token builtin class-name">echo</span> <span class="token string">'cat file1&gt;file4'</span> <span class="token operator">&gt;&gt;</span> <span class="token builtin class-name">test</span>
-<span class="token builtin class-name">echo</span> <span class="token string">'cat file2&gt;&gt;file4'</span> <span class="token operator">&gt;&gt;</span> <span class="token builtin class-name">test</span>
-<span class="token builtin class-name">echo</span> <span class="token string">'cat file3&gt;&gt;file4'</span> <span class="token operator">&gt;&gt;</span> <span class="token builtin class-name">test</span>
-<span class="token builtin class-name">echo</span> <span class="token builtin class-name">echo</span> save file4 to ./result <span class="token operator">&gt;&gt;</span> <span class="token builtin class-name">test</span>
-<span class="token builtin class-name">echo</span> <span class="token string">'cat file4&gt;&gt;result'</span> <span class="token operator">&gt;&gt;</span> <span class="token builtin class-name">test</span>  <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-</li>
-<li><p>result 文件内容：</p>
-<pre class="line-numbers language-none"><code class="language-none">3
-2
-1<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></li>
+<h5 id="输出-5"><a href="#输出-5" class="headerlink" title="输出"></a>输出</h5><ul>
+<li>位扩展结果<code>Ext[31:0]</code></li>
 </ul>
-<p>下面根据 test 文件内容说明出现该结果的原因：</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">echo</span> Shell Start<span class="token punctuation">..</span>. 						<span class="token comment">#输出 Shell Start...</span>
-<span class="token builtin class-name">echo</span> <span class="token builtin class-name">set</span> a <span class="token operator">=</span> <span class="token number">1</span>								<span class="token comment">#输出 set a = q</span>
-<span class="token assign-left variable">a</span><span class="token operator">=</span><span class="token number">1</span>											<span class="token comment">#给变量 a 赋值 1</span>
-<span class="token builtin class-name">echo</span> <span class="token builtin class-name">set</span> b <span class="token operator">=</span> <span class="token number">2</span>								<span class="token comment">#输出 set b = 2</span>
-<span class="token assign-left variable">b</span><span class="token operator">=</span><span class="token number">2</span>											<span class="token comment">#给变量 b 赋值 2</span>
-<span class="token builtin class-name">echo</span> <span class="token builtin class-name">set</span> c <span class="token operator">=</span> a+b							<span class="token comment">#输出 set c = a+b</span>
-<span class="token assign-left variable">c</span><span class="token operator">=</span>$<span class="token punctuation">[</span><span class="token variable">$a</span>+<span class="token variable">$b</span><span class="token punctuation">]</span>									<span class="token comment">#给变量 c 赋值 (a+b)</span>
-<span class="token builtin class-name">echo</span> <span class="token assign-left variable">c</span><span class="token operator">=</span> <span class="token variable">$c</span>									<span class="token comment">#输出 c= $c</span>
-<span class="token builtin class-name">echo</span> save c to ./file1						<span class="token comment">#输出 save c to ./file1</span>
-<span class="token builtin class-name">echo</span> <span class="token variable">$c</span><span class="token operator">&gt;</span>file1								<span class="token comment">#把变量 c 的值输出到文件 file1</span>
-<span class="token builtin class-name">echo</span> save b to ./file2						<span class="token comment">#输出 save b to ./file2</span>
-<span class="token builtin class-name">echo</span> <span class="token variable">$b</span><span class="token operator">&gt;</span>file2								<span class="token comment">#把变量 b 的值输出到文件 file2</span>
-<span class="token builtin class-name">echo</span> save a to ./file3						<span class="token comment">#输出 save a to ./file3	</span>
-<span class="token builtin class-name">echo</span> <span class="token variable">$a</span><span class="token operator">&gt;</span>file3 								<span class="token comment">#把变量 a 的值输出到文件 file3</span>
-<span class="token builtin class-name">echo</span> save file1 file2 file3 to file4 		<span class="token comment">#输出 save file1 file2 file3 to file4 </span>
-<span class="token function">cat</span> file<span class="token operator"><span class="token file-descriptor important">1</span>&gt;</span>file4 							<span class="token comment">#将 file4 改写为 file1 的内容</span>
-<span class="token function">cat</span> file<span class="token operator"><span class="token file-descriptor important">2</span>&gt;&gt;</span>file4 							<span class="token comment">#在 file4 后添加 file2 的内容</span>
-<span class="token function">cat</span> file<span class="token operator"><span class="token file-descriptor important">3</span>&gt;&gt;</span>file4 							<span class="token comment">#在 file4 后添加 file3 的内容</span>
-<span class="token builtin class-name">echo</span> save file4 to ./result 				<span class="token comment">#输出 save file4 to ./result </span>
-<span class="token function">cat</span> file<span class="token operator"><span class="token file-descriptor important">4</span>&gt;&gt;</span>result 							<span class="token comment">#在 result 后添加 file4 的内容</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="位扩展方式"><a href="#位扩展方式" class="headerlink" title="位扩展方式"></a>位扩展方式</h4><table>
+<thead>
+<tr>
+<th align="center">ExtOp</th>
+<th align="center">Function</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">00</td>
+<td align="center">Zero</td>
+</tr>
+<tr>
+<td align="center">01</td>
+<td align="center">Sign</td>
+</tr>
+<tr>
+<td align="center">10</td>
+<td align="center">High</td>
+</tr>
+<tr>
+<td align="center">11</td>
+<td align="center">?</td>
+</tr>
+</tbody></table>
+<h4 id="实现-3"><a href="#实现-3" class="headerlink" title="实现"></a>实现</h4><ul>
+<li>这里ExtOp用两位表示，并留出一种了情况留待扩展</li>
+</ul>
+<h3 id="GRF-通用寄存器组"><a href="#GRF-通用寄存器组" class="headerlink" title="GRF(通用寄存器组)"></a>GRF(通用寄存器组)</h3><h4 id="输入与输出-6"><a href="#输入与输出-6" class="headerlink" title="输入与输出"></a>输入与输出</h4><h5 id="输入-6"><a href="#输入-6" class="headerlink" title="输入"></a>输入</h5><ul>
+<li>读地址1<code>A1[4:0]</code>  </li>
+<li>读地址2<code>A2[4:0]</code>  </li>
+<li>写地址<code>A3[4:0]</code>  </li>
+<li>数据输入<code>WD[31:0]</code></li>
+<li>异步复位信号<code>reset</code></li>
+<li>写使能信号<code>we</code></li>
+</ul>
+<h5 id="输出-6"><a href="#输出-6" class="headerlink" title="输出"></a>输出</h5><ul>
+<li>输出A1指定的寄存器数据<code>RD1[31:0]</code>  </li>
+<li>输出A2指定的寄存器数据<code>RD2[31:0]</code></li>
+</ul>
+<h4 id="实现-4"><a href="#实现-4" class="headerlink" title="实现"></a>实现</h4><ul>
+<li><p>零寄存器的值始终为0  </p>
+</li>
+<li><p>这里直接使用了在 <em>P0_L0_GRF</em> 中搭建的电路</p>
+</li>
+</ul>
+<h4 id="注意事项-1"><a href="#注意事项-1" class="headerlink" title="注意事项"></a>注意事项</h4><ul>
+<li>将RAM的”Data Interface”设为”Seperate load and store ports”</li>
+</ul>
+<h2 id="思考题"><a href="#思考题" class="headerlink" title="思考题"></a>思考题</h2><h3 id="1"><a href="#1" class="headerlink" title="1"></a>1</h3><p><strong>上面我们介绍了通过 FSM 理解单周期 CPU 的基本方法。请大家指出单周期 CPU 所用到的模块中，哪些发挥状态存储功能，哪些发挥状态转移功能。</strong></p>
+<p>答：状态存储功能： PC 、 GRF ；状态转移功能： NPC 、 DM 。</p>
+<h3 id="2"><a href="#2" class="headerlink" title="2"></a>2</h3><p><strong>现在我们的模块中 IM 使用 ROM， DM 使用 RAM， GRF 使用 Register，这种做法合理吗？ 请给出分析，若有改进意见也请一并给出。</strong></p>
+<p>答：ROM是只读存储器，速度慢于RAM，但它的内容一经写入不易被更改，具有非易失性，使用于IM中可以很好地保存指令；RAM是随机存取存储器，它的速度很快，可以随时对DM中相应的地址进行读或写，用于DM中方便又快捷；Register的使用效率更高，高于RAM，将它用于GRF可以更加快捷地对32个寄存器进行读或写。</p>
+<h3 id="3"><a href="#3" class="headerlink" title="3"></a>3</h3><p><strong>事实上，实现 <code>nop</code> 空指令，我们并不需要将它加入控制信号真值表，为什么？</strong></p>
+<p>答：对于 <code>nop</code> 空指令，其对应的控制型号RegWrite、MemWrite、nPC_sel均为0，且不关心RegDst、ALUSrc、MemtoReg、ALUctr、ExtOp这些控制信号，所以无需加入控制信号真值表。</p>
+<h3 id="4"><a href="#4" class="headerlink" title="4"></a>4</h3><p><strong>上文提到，MARS 不能导出 PC 与 DM 起始地址均为 0 的机器码。实际上，可以避免手工修改的麻烦。请查阅相关资料进行了解，并阐释为了解决这个问题，你最终采用的方法。</strong></p>
+<p>在 MARS 中，默认 PC 的地址从 0x00003000 开始，所以可以在 Logisim 中的 IM 模块中判断输入是否大于 0x00003000 ，若大于，则减去 0x00003000 。</p>
+<img src="/2022/10/31/buaa-co-2022-p3/Q4.png" class="" title="Q4">
 
-<ul>
-<li>echo echo Shell Start 与 echo `echo Shell Start`效果是否有区别？<ul>
-<li>没有区别，都是输出字符串 echo Shell Start</li>
-</ul>
-</li>
-<li>echo echo$c&gt;file1 与 echo `echo $c&gt;file1`效果是否有区别？<ul>
-<li>有区别，前者是用字符串 echo$c 写 file1，后者是输出字符串 echo $c&gt;file1</li>
-</ul>
-</li>
-</ul>
-<h2 id="难点分析"><a href="#难点分析" class="headerlink" title="难点分析"></a>难点分析</h2><ol>
-<li><p>对 <code>sed</code> 命令各个参数的熟练运用</p>
-<p>在 Exercise 0.1-3 中，要求提取 AAA 文件的第 8、32、128、512、1024 行的内容，并输入到文件 BBB 中，需要用到的 bash 文件为</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">touch</span> <span class="token variable">$2</span>
-<span class="token keyword">for</span> <span class="token for-or-select variable">line</span> <span class="token keyword">in</span> <span class="token number">8</span> <span class="token number">32</span> <span class="token number">128</span> <span class="token number">512</span> <span class="token number">1024</span> <span class="token builtin class-name">:</span>
-<span class="token keyword">do</span>
-	<span class="token function">sed</span> <span class="token parameter variable">-n</span> <span class="token string">"<span class="token variable">${line}</span>p"</span> <span class="token variable">$1</span> <span class="token operator">&gt;&gt;</span> <span class="token variable">$2</span>
-<span class="token keyword">done</span> <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="5"><a href="#5" class="headerlink" title="5"></a>5</h3><p><strong>阅读 Pre 的 <a target="_blank" rel="noopener" href="https://cscore.e1.buaa.edu.cn/tutorial/mips/mips-6/mips6-1/">“MIPS 指令集及汇编语言”</a> 一节中给出的测试样例，评价其强度（可从各个指令的覆盖情况，单一指令各种行为的覆盖情况等方面分析），并指出具体的不足之处。</strong></p>
+<p>答：从不同指令来分析：</p>
+<h4 id="ori指令"><a href="#ori指令" class="headerlink" title="ori指令"></a>ori指令</h4><pre class="line-numbers language-none"><code class="language-none">ori $a0, $0, 123
+ori $a1, $a0, 456
+# ori $a2, $0, -456<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
-<p>其中 $1 是待读取文件 AAA ，$2 是待写入文件 BBB。</p>
-</li>
-<li><p>Makefile 文件内部使用其他目录的 Makefile 文件</p>
-<p>在 Exercise 0.4-2 中，不同的 2 个目录下均有 Makefile 文件，在 csc/ 目录下的 Makefile 文件需使用到 csc/code/ 目录下的 Makefile 文件。要注意的是：</p>
-<ol>
-<li>在 Makefile 文件内需要使用相对路径来书写文件名等。</li>
-<li>可以在 Makefile 文件内通过 <code>cd</code> 命令来进入其他目录并执行其他目录的 Makefile 文件。</li>
-</ol>
-</li>
-<li><p><code>gcc</code> 命令 <code>-c</code> 参数的意义</p>
-<p>在使用 <code>gcc</code> 命令时，<code>-c</code> 参数指示编译器仅仅进行编译和汇编，并生成目标文件，而不进行链接操作。在 Exercise 0.4-2 中，main.c 文件调用了 fibo.c ，我在第一次编写指令时未添加 <code>-c</code> 参数，导致编译失败，应该先使用 <code>-c</code> 参数生成 2 个未进行链接的 .o 文件，再将两个 .o 文件使用不带 <code>-c</code> 参数的 <code>gcc</code> 命令进行链接。</p>
-</li>
-</ol>
-<h2 id="实验体会"><a href="#实验体会" class="headerlink" title="实验体会"></a>实验体会</h2><p>在 Lab0 课下实验中，我初步了解了 Linux 操作系统的命令行界面，学习到了一些基础指令的使用。其中，我对 Shell 脚本很感兴趣，这和我之前接触得更多的图形界面不同，它是一个命令的集合，是一种文本性的描述，实现了效率很高的精准自动化操作。我觉得学习自主编写 Shell 脚本并运行得到特定结果会是一件并不简单但很有乐趣的过程。另外，在上学期 cpp 课程初步了解 git 的基础上，我了解了 git 更深层的原理，也学到了更多的 git 指令。</p>
+<p>包含了非零数与 0 进行或运算，非零数之间进行或运算的情况，覆盖情况很好。<del>（应该没有必要测试 0 与 0 进行或运算的情况）</del></p>
+<h4 id="lui指令"><a href="#lui指令" class="headerlink" title="lui指令"></a>lui指令</h4><pre class="line-numbers language-none"><code class="language-none">lui $a2, 123            # 符号位为 0
+lui $a3, 0xffff         # 符号位为 1
+ori $a3, $a3, 0xffff    # $a3 = -1<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>未包含高位非 0 的情况。</p>
+<h4 id="add-指令"><a href="#add-指令" class="headerlink" title="add 指令"></a>add 指令</h4><pre class="line-numbers language-none"><code class="language-none">add $s0, $a0, $a2      # 正正
+add $s1, $a0, $a3      # 正负
+add $s2, $a3, $a3      # 负负<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>包含了正数加正数，正数加负数，负数加负数三种情况。可以在此基础上测试一下数据范围边界的一些数之间的 add 。</p>
+<h4 id="sub指令"><a href="#sub指令" class="headerlink" title="sub指令"></a>sub指令</h4><p>给出的测试样例未对 sub 指令进行测试。</p>
+<h4 id="sw指令"><a href="#sw指令" class="headerlink" title="sw指令"></a>sw指令</h4><pre class="line-numbers language-assembly" data-language="assembly"><code class="language-assembly">ori $t0, $0, 0x0000
+sw $a0, 0($t0)
+sw $a1, 4($t0)
+sw $a2, 8($t0)
+sw $a3, 12($t0)
+sw $s0, 16($t0)
+sw $s1, 20($t0)
+sw $s2, 24($t0)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="lw指令"><a href="#lw指令" class="headerlink" title="lw指令"></a>lw指令</h4><pre class="line-numbers language-assembly" data-language="assembly"><code class="language-assembly">lw $a0, 0($t0)
+lw $a1, 12($t0)
+sw $a0, 28($t0)
+sw $a1, 32($t0)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>应该测试一下向 $0 写入数据的情况。</p>
+<h4 id="beq指令"><a href="#beq指令" class="headerlink" title="beq指令"></a>beq指令</h4><pre class="line-numbers language-assembly" data-language="assembly"><code class="language-assembly">ori $a0, $0, 1
+ori $a1, $0, 2
+ori $a2, $0, 1
+
+beq $a0, $a1, loop1     # 不相等
+beq $a0, $a2, loop2     # 相等
+
+loop1:sw $a0, 36($t0)
+loop2:sw $a1, 40($t0)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h2 id="测试方案"><a href="#测试方案" class="headerlink" title="测试方案"></a>测试方案</h2><h3 id="ori指令-1"><a href="#ori指令-1" class="headerlink" title="ori指令"></a>ori指令</h3><pre class="line-numbers language-assembly" data-language="assembly"><code class="language-assembly">ori $a0, 123
+ori $a1, 456<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h3 id="lui指令-1"><a href="#lui指令-1" class="headerlink" title="lui指令"></a>lui指令</h3><pre class="line-numbers language-assembly" data-language="assembly"><code class="language-assembly">lui $a2, 234
+lui $a2, 123            # 符号位为 0<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h3 id="add指令"><a href="#add指令" class="headerlink" title="add指令"></a>add指令</h3><pre class="line-numbers language-assembly" data-language="assembly"><code class="language-assembly">add $t0, $a0, $a1       # 测试正数+正数
+lui $a3, 0xffff         # 符号位为 1
+ori $a3, $a3, 0xffff    # $a3 = -1(先构造一个负数)
+add $t1, $a0, $a3       # 测试正数+负数
+add $t2, $a3, $a3       # 测试负数+负数<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="sub指令-1"><a href="#sub指令-1" class="headerlink" title="sub指令"></a>sub指令</h3><pre class="line-numbers language-assembly" data-language="assembly"><code class="language-assembly">sub $t0, $a0, $a1       # 测试正数-正数(结果为负数)
+sub $t1, $a3, $a0       # 测试负数-正数
+sub $t2, $a3, $t0       # 测试负数-负数
+sub $t3, $a3, $a1       # 测试负数-正数<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="xor指令"><a href="#xor指令" class="headerlink" title="xor指令"></a>xor指令</h3><pre class="line-numbers language-assembly" data-language="assembly"><code class="language-assembly">xor $t4, $a0, $a1
+xor $t5, $a0, $a2   <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h3 id="sw指令-1"><a href="#sw指令-1" class="headerlink" title="sw指令"></a>sw指令</h3><pre class="line-numbers language-assembly" data-language="assembly"><code class="language-assembly">ori $t0, $0, 0x0000
+sw $a0, 0($t0)
+sw $a1, 4($t0)
+sw $a2, 8($t0)
+sw $a3, 12($t0)
+sw $t1, 20($t0)
+sw $t2, 28($t0)
+sw $t3, 32($t0)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="lw指令-1"><a href="#lw指令-1" class="headerlink" title="lw指令"></a>lw指令</h3><pre class="line-numbers language-assembly" data-language="assembly"><code class="language-assembly">lw $0, 0($t0)
+lw $a1, 0($t0)
+lw $a0, 8($t0)
+lw $a0, 12($t0)
+sw $a0, 24($t0)
+sw $a1, 28($t0)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="beq指令-1"><a href="#beq指令-1" class="headerlink" title="beq指令"></a>beq指令</h3><pre class="line-numbers language-assembly" data-language="assembly"><code class="language-assembly">ori $a0, $0, 1
+ori $a1, $0, 2
+ori $a2, $0, 1
+
+beq $a0, $a1, beq1
+beq $a0, $a2, beq2
+
+beq1:
+sw $a1, 36($t0)
+beq2:
+sw $a1, 40($t0)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="完整测试样例"><a href="#完整测试样例" class="headerlink" title="完整测试样例"></a>完整测试样例</h3><pre class="line-numbers language-assembly" data-language="assembly"><code class="language-assembly">ori $a0, 123
+ori $a1, 456
+
+add $t0, $a0, $a1      
+lui $a3, 0xffff         
+ori $a3, $a3, 0xffff   
+add $t1, $a0, $a3      
+add $t2, $a3, $a3       
+
+sub $t0, $a0, $a1       
+sub $t1, $a3, $a0      
+sub $t2, $a3, $t0       
+sub $t3, $a3, $a1  
+
+xor $t4, $a0, $a1
+xor $t5, $a0, $a2     
+
+ori $t0, $0, 0x0000
+sw $a0, 0($t0)
+sw $a1, 4($t0)
+sw $a2, 8($t0)
+sw $a3, 12($t0)
+sw $t1, 20($t0)
+sw $t2, 28($t0)
+sw $t3, 32($t0)
+
+lw $0, 0($t0)
+lw $a1, 0($t0)
+lw $a0, 8($t0)
+lw $a0, 12($t0)
+sw $a0, 24($t0)
+sw $a1, 28($t0)
+
+ori $a0, $0, 1
+ori $a1, $0, 2
+ori $a2, $0, 1
+
+beq $a0, $a1, beq1
+beq $a0, $a2, beq2
+
+beq1:
+sw $a1, 36($t0)
+beq2:
+sw $a1, 40($t0)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 
                 
             </div>
@@ -609,8 +930,8 @@ forth<span aria-hidden="true" class="line-numbers-rows"><span></span><span></spa
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
-                                    <span class="chip bg-color">操作系统</span>
+                                <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90/">
+                                    <span class="chip bg-color">计算机组成</span>
                                 </a>
                             
                         </div>
@@ -654,12 +975,11 @@ forth<span aria-hidden="true" class="line-numbers-rows"><span></span><span></spa
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2023/03/22/buaa-os-2023-lab0/">
+                <a href="/2023/03/06/buaa-os-2023-lab0/">
                     <div class="card-image">
                         
                         
@@ -675,9 +995,9 @@ forth<span aria-hidden="true" class="line-numbers-rows"><span></span><span></spa
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-03-22
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2023-03-06
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -690,7 +1010,6 @@ forth<span aria-hidden="true" class="line-numbers-rows"><span></span><span></spa
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
@@ -706,16 +1025,16 @@ forth<span aria-hidden="true" class="line-numbers-rows"><span></span><span></spa
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+                本篇&nbsp;<i class="far fa-dot-circle"></i>
             </div>
             <div class="card">
-                <a href="/2023/03/22/buaa-os-2023-lab1/">
+                <a href="/2022/10/31/buaa-co-2022-p3/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/%20(6).png" class="responsive-img" alt="BUAA_OS_2023_Lab1">
+                        <img src="/medias/featureimages/%20(20).jpg" class="responsive-img" alt="BUAA_CO_2022_P3">
                         
-                        <span class="card-title">BUAA_OS_2023_Lab1</span>
+                        <span class="card-title">BUAA_CO_2022_P3</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -726,25 +1045,26 @@ forth<span aria-hidden="true" class="line-numbers-rows"><span></span><span></spa
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-03-22
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-10-31
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" class="post-category">
-                                    操作系统
+                            <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90/" class="post-category">
+                                    计算机组成
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
-                        <span class="chip bg-color">操作系统</span>
+                    <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90/">
+                        <span class="chip bg-color">计算机组成</span>
                     </a>
                     
                 </div>

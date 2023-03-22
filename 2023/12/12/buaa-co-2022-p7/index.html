@@ -457,7 +457,7 @@
 <td>利用 MARS 编写简单的异常处理程序用于测试。</td>
 </tr>
 </tbody></table>
-<img src="/2023/03/22/buaa-co-2022-p7/%E6%9E%B6%E6%9E%84%E5%9B%BE.png" class="" title="架构图">
+<img src="/2023/12/12/buaa-co-2022-p7/%E6%9E%B6%E6%9E%84%E5%9B%BE.png" class="" title="架构图">
 
 <h3 id="新增指令"><a href="#新增指令" class="headerlink" title="新增指令"></a>新增指令</h3><p>和 P6 相比， P7 主要新增了 mfc0, mtc0, syscall, eret 四条指令，mfc0 和 mtc0 的处理相对比较简单，且应该不涉及冒险冲突问题。</p>
 <h4 id="syscall"><a href="#syscall" class="headerlink" title="syscall"></a>syscall</h4><p>这条指令在 P7 中直接视为一种异常来处理，开始时我因为忘记添加 `Exc_syscall 的判断而少了 interrupt count 。</p>
@@ -472,7 +472,7 @@
 
 <p>eret 标志着异常处理程序的结束，所以直接将 eret_M 信号作为 EXLClr 输入给 CP0 以复位 EXL。</p>
 <h3 id="中断和异常"><a href="#中断和异常" class="headerlink" title="中断和异常"></a>中断和异常</h3><p>在 P7 中，我们要实现的中断和异常有以下几种：</p>
-<img src="/2023/03/22/buaa-co-2022-p7/%E5%BC%82%E5%B8%B8%E7%A0%81.png" class="" title="异常码">
+<img src="/2023/12/12/buaa-co-2022-p7/%E5%BC%82%E5%B8%B8%E7%A0%81.png" class="" title="异常码">
 
 <p>需要注意的是异常与中断的优先级问题</p>
 <ol>
@@ -909,7 +909,7 @@
 <p>答：如果把 CPU 和每一个外设都直接相连，不仅会复杂化 CPU 的端口，而且在添加或删除外设时又要重新修改 CPU 的端口。通过 Bridge ，我们可以将所有外设同等看待，而且 CPU 只需给出要访存的外设地址和相应数据， Bridge 就可以帮助 CPU 进行相应的访存操作。</p>
 <p>4、请阅读官方提供的定时器源代码，阐述两种中断模式的异同，并分别针对每一种模式绘制状态移图。</p>
 <p>答：两种中断模式的不同点就在于计数结束后，模式 0 自动将使能信号置为 0 ，而模式 1 不改变使能信号，而是将中断信号置为 0 。</p>
-<img src="/2023/03/22/buaa-co-2022-p7/%E5%AE%9A%E6%97%B6%E5%99%A8%E7%8A%B6%E6%80%81%E8%BD%AC%E7%A7%BB%E5%9B%BE.jpg" class="" title="定时器状态转移">
+<img src="/2023/12/12/buaa-co-2022-p7/%E5%AE%9A%E6%97%B6%E5%99%A8%E7%8A%B6%E6%80%81%E8%BD%AC%E7%A7%BB%E5%9B%BE.jpg" class="" title="定时器状态转移">
 
 <p>5、倘若中断信号流入的时候，在检测宏观 PC 的一级如果是一条空泡（你的 CPU 该级所有信息均为空）指令，此时会发生什么问题？在此例基础上请思考：在 P7 中，清空流水线产生的空泡指令应该保留原指令的哪些信息？</p>
 <p>答：空泡流水的宏观 PC 为 0 ，其所有信号都为 0 。如果此时产生中断信号，输入 CP0 的 VPC  和 isBD 值为 0 ， EPC 中就会存入错误的值。所以为了保证 CP0 正常工作不出现错误，在清空流水线产生的空泡指令应当保留原指令的 PC 和 isBD 信号。</p>
@@ -1003,17 +1003,18 @@ java -jar ‪D:\study\CO\P7\Mars_p7\Mars.jar a db mc CompactDataAtZero dump 0x00
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2023/03/22/buaa-oo-2023-unit1/">
+                <a href="/2023/12/12/buaa-co-2022-p7/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/%20(11).png" class="responsive-img" alt="BUAA_OO_2023_Unit1">
+                        <img src="/medias/featureimages/%20(16).jpg" class="responsive-img" alt="BUAA_CO_2022_P7">
                         
-                        <span class="card-title">BUAA_OO_2023_Unit1</span>
+                        <span class="card-title">BUAA_CO_2022_P7</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1023,34 +1024,27 @@ java -jar ‪D:\study\CO\P7\Mars_p7\Mars.jar a db mc CompactDataAtZero dump 0x00
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-03-22
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-12-12
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%9E%84%E9%80%A0/" class="post-category">
-                                    面向对象设计与构造
+                            <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90/" class="post-category">
+                                    计算机组成
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">
-                        <span class="chip bg-color">面向对象</span>
-                    </a>
-                    
-                    <a href="/tags/JAVA/">
-                        <span class="chip bg-color">JAVA</span>
-                    </a>
-                    
-                    <a href="/tags/%E9%80%92%E5%BD%92%E4%B8%8B%E9%99%8D/">
-                        <span class="chip bg-color">递归下降</span>
+                    <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90/">
+                        <span class="chip bg-color">计算机组成</span>
                     </a>
                     
                 </div>
@@ -1064,7 +1058,7 @@ java -jar ‪D:\study\CO\P7\Mars_p7\Mars.jar a db mc CompactDataAtZero dump 0x00
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2023/03/22/buaa-co-2022-p6/">
+                <a href="/2023/11/28/buaa-co-2022-p6/">
                     <div class="card-image">
                         
                         
@@ -1081,7 +1075,7 @@ java -jar ‪D:\study\CO\P7\Mars_p7\Mars.jar a db mc CompactDataAtZero dump 0x00
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-03-22
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-11-28
                             </span>
                         <span class="publish-author">
                             
